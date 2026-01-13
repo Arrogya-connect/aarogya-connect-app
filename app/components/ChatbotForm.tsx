@@ -8,11 +8,10 @@ import {
   Alert,
   FlatList,
   Image,
-  Platform,
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { styles } from "../../styles/dashboardStyles";
 import { CHATBOT_TEXT, Lang } from "../constants/chatbotText";
@@ -84,24 +83,19 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
   };
 
   // ---------- Helper to normalize URIs for upload ----------
+  // ---------- Helper to normalize URIs for upload ----------
   async function normalizeUriForUpload(uri: string | null) {
     if (!uri) return null;
     try {
-      // Android content:// URIs need copying to a file path
-      if (Platform.OS === "android" && uri.startsWith("content://")) {
-        const dest = `${FileSystem.cacheDirectory}${Date.now()}-${uri.split("/").pop()}`;
-        await FileSystem.copyAsync({ from: uri, to: dest });
-        return dest;
-      }
-      // If the uri exists return it, otherwise try copying to cache
-      const info = await FileSystem.getInfoAsync(uri);
-      if (info.exists) return uri;
-      const dest = `${FileSystem.cacheDirectory}${Date.now()}-${uri.split("/").pop()}`;
+      // Force copy to cache to ensure we have a valid file:// path that fetch can read
+      const filename = uri.split("/").pop() || `file-${Date.now()}`;
+      const dest = `${FileSystem.cacheDirectory}${Date.now()}-${filename}`;
       await FileSystem.copyAsync({ from: uri, to: dest });
       return dest;
     } catch (e) {
       console.warn("normalizeUriForUpload failed", e, uri);
-      return null;
+      // Fallback: return original URI if copy fails (might work if it's already file://)
+      return uri;
     }
   }
 
@@ -126,12 +120,16 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
         const a = attachments[i];
         const uploadUri = await normalizeUriForUpload(a.uri);
         if (!uploadUri) continue;
-        const name = a.name || `attachment-${Date.now()}-${i}`;
-        const mime =
-          a.type === "image" ? "image/jpeg" : a.type === "video" ? "video/mp4" : "application/octet-stream";
+
+        const name = a.name || `attachment-${Date.now()}-${i}.jpg`; // Helper extension
+        const mime = a.type === "video" ? "video/mp4" : "image/jpeg"; // simpler mime
+
+        // Debug Alert logic (can be removed later)
+        // Alert.alert("Debug", `Appending: ${name} size: ${uploadUri.length}`);
+
         form.append("attachments", {
           uri: uploadUri,
-          name,
+          name: name,
           type: mime,
         } as any);
       }
