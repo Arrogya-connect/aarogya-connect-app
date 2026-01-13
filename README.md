@@ -1,50 +1,46 @@
-# Welcome to your Expo app 👋
+# Aarogya Connect App Portal
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project consists of a React Native (Expo) mobile application for patient health records and a Node.js/Express backend.
 
-## Get started
+## 🚀 Quick Start (For Developers/Users)
 
-1. Install dependencies
+Since the backend is already deployed to the cloud, you only need to run the mobile app locally.
 
+### 1. Prerequisites
+- [Node.js](https://nodejs.org/) installed on your computer.
+- **Expo Go** app installed on your phone (Android/iOS).
+
+### 2. Setup & Run
+1. Open the `aarogya-connect-app` folder in your terminal:
+   ```bash
+   cd aarogya-connect-app
+   ```
+2. Install dependencies:
    ```bash
    npm install
    ```
-
-2. Start the app
-
+3. Start the app:
    ```bash
    npx expo start
    ```
+4. A QR code will appear. Scan it with the **Expo Go** app on your phone.
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🔐 Test Credentials
+- **Username:** `demo`
+- **Password:** `secret123`
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 🛠 Project Structure
+- **`aarogya-connect-app/`**: Frontend mobile application (React Native / Expo).
+  - Already configured to connect to the live backend: `https://aarogya-backend-4amu.onrender.com`
+- **`backend/`**: Node.js & Express server.
+  - Deployed on Render.
+  - Connected to MongoDB Atlas.
 
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 📦 Sharing this Project
+To share this with others:
+1. Zip the entire project folder (excluding `node_modules` folders if you want a smaller file, but `npm install` brings them back).
+2. Tell them to follow the **Setup & Run** steps above.
