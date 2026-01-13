@@ -103,6 +103,9 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
   const handleSubmit = async () => {
     if (!validate()) return;
 
+    // DEBUG: Pre-flight check
+    Alert.alert("Debug Pre-Flight", `Submitting.\nAttachments State Count: ${attachments.length}\nNote: If this is 0, then no files are selected.`);
+
     try {
       const token = await AsyncStorage.getItem("sessionToken");
       if (!token) {
@@ -124,8 +127,8 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
         const name = a.name || `attachment-${Date.now()}-${i}.jpg`; // Helper extension
         const mime = a.type === "video" ? "video/mp4" : "image/jpeg"; // simpler mime
 
-        // Debug Alert logic
-        Alert.alert("Debug Upload", `File: ${name}\nSize: ${uploadUri.length} chars (path)`);
+        console.log(`Appending file ${i}:`, name, uploadUri);
+        // Alert.alert("Debug Loop", `Processing file ${i+1}/${attachments.length}`);
 
         form.append("attachments", {
           uri: uploadUri,

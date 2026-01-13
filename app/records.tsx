@@ -136,12 +136,16 @@ export default function RecordsScreen() {
           id: a._id || a.id,
           queryNo: "APP-" + (a._id ? a._id.slice(-4).toUpperCase() : "0000"),
           title: "Appointment: " + (a.problem || "General"),
-          date: a.preferredDate ? new Date(a.preferredDate).toLocaleDateString() : "N/A",
+          date: (a.preferredDate ? new Date(a.preferredDate).toLocaleDateString() : "N/A") + (a.preferredTime ? " " + a.preferredTime : ""),
           phone: a.mobile || "",
           description: `Booked for ${a.preferredTime || "N/A"}. Problem: ${a.problem}`,
-          status: a.status === "confirmed" || a.status === "completed" ? "confirmed" : "appointment_generated", // map 'pending' appt to 'appointment_generated' UI status
-          doctorName: a.status === 'confirmed' ? "Assigned Doctor" : undefined,
-          doctorResponse: a.status === 'confirmed' ? "Appointment Confirmed. Please arrive 15 mins early." : undefined
+          status: (a.status?.toLowerCase() === "confirmed" || a.status?.toLowerCase() === "completed") ? "confirmed" : "appointment_generated",
+          doctorName: (a.status?.toLowerCase() === "confirmed" || a.status?.toLowerCase() === "completed")
+            ? a.doctorName
+            : undefined,
+          doctorResponse: (a.status?.toLowerCase() === "confirmed" || a.status?.toLowerCase() === "completed")
+            ? (a.doctorResponse || "Appointment Confirmed. Please arrive 15 mins early.")
+            : undefined
         }));
 
         // 5. Combine
@@ -245,7 +249,26 @@ export default function RecordsScreen() {
                           <Feather name="user-check" size={16} color="#16A34A" />
                           <Text style={styles.doctorLabel}>DOCTOR'S RESPONSE</Text>
                         </View>
+
+                        {selectedRecord.doctorName && (
+                          <View style={{ marginBottom: 4 }}>
+                            <Text style={{ fontSize: 13, fontWeight: "700", color: "#166534" }}>
+                              {selectedRecord.doctorName}
+                            </Text>
+                            {selectedRecord.doctorDetails && (
+                              <Text style={{ fontSize: 11, color: "#15803d", marginTop: 1 }}>{selectedRecord.doctorDetails}</Text>
+                            )}
+                          </View>
+                        )}
+
                         <Text style={styles.doctorResponseText}>{selectedRecord.doctorResponse}</Text>
+
+                        <View style={{ marginTop: 8, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
+                          <Feather name="clock" size={10} color="#15803d" style={{ marginRight: 4 }} />
+                          <Text style={{ fontSize: 10, color: "#15803d", fontWeight: "600" }}>
+                            {selectedRecord.date}
+                          </Text>
+                        </View>
                       </View>
                     )}
 

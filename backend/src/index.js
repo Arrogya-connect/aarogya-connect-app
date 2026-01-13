@@ -12,56 +12,84 @@ if (!MONGO_URI) {
   process.exit(1);
 }
 
-async function start() {
-  try {
-    await mongoose.connect(MONGO_URI);
-    console.log('Connected to MongoDB');
+const IS_VERCEL = !!process.env.VERCEL;
 
-    const server = app.listen(PORT, HOST, () => {
-      console.log(`Server listening on http://${HOST}:${PORT}`);
-    });
+if (IS_VERCEL) {
+  // Vercel / Serverless Environment
+  let isConnected = false;
 
-    // Graceful shutdown
-    const graceful = async () => {
-      console.log('Shutting down gracefully...');
-      server.close(async (err) => {
-        if (err) {
-          console.error('Error while closing server:', err);
-          process.exit(1);
-        }
-        try {
-          await mongoose.disconnect();
-          console.log('MongoDB disconnected.');
-          process.exit(0);
-        } catch (e) {
-          console.error('Error disconnecting MongoDB:', e);
-          process.exit(1);
-        }
+  const connectToDatabase = async () => {
+    if (isConnected) {
+      return;
+    }
+    try {
+      await mongoose.connect(MONGO_URI);
+      isConnected = true;
+      console.log("MongoDB Connected (Serverless)");
+    } catch (error) {
+      console.error("MongoDB Connection Error:", error);
+    }
+  };
+
+  // Export handler for Vercel
+  module.exports = async (req, res) => {
+    await connectToDatabase();
+    return app(req, res);
+  };
+
+} else {
+  // Local / Render / Standard Server Environment
+  async function start() {
+    try {
+      await mongoose.connect(MONGO_URI);
+      console.log('Connected to MongoDB');
+
+      const server = app.listen(PORT, HOST, () => {
+        console.log(`Server listening on http://${HOST}:${PORT}`);
       });
 
-      // Force exit if shutdown hangs
-      setTimeout(() => {
-        console.error('Forcing shutdown.');
-        process.exit(1);
-      }, 10000).unref();
-    };
+      // Graceful shutdown
+      const graceful = async () => {
+        console.log('Shutting down gracefully...');
+        server.close(async (err) => {
+          if (err) {
+            console.error('Error while closing server:', err);
+            process.exit(1);
+          }
+          try {
+            await mongoose.disconnect();
+            console.log('MongoDB disconnected.');
+            process.exit(0);
+          } catch (e) {
+            console.error('Error disconnecting MongoDB:', e);
+            process.exit(1);
+          }
+        });
 
-    process.on('SIGINT', graceful);
-    process.on('SIGTERM', graceful);
+        // Force exit if shutdown hangs
+        setTimeout(() => {
+          console.error('Forcing shutdown.');
+          process.exit(1);
+        }, 10000).unref();
+      };
 
-    process.on('unhandledRejection', (reason, promise) => {
-      console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-    });
+      process.on('SIGINT', graceful);
+      process.on('SIGTERM', graceful);
 
-    process.on('uncaughtException', (err) => {
-      console.error('Uncaught Exception:', err);
-      // Optionally exit here: process.exit(1)
-    });
+      process.on('unhandledRejection', (reason, promise) => {
+        console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+      });
 
-  } catch (err) {
-    console.error('Failed to start server:', err);
-    process.exit(1);
+      process.on('uncaughtException', (err) => {
+        console.error('Uncaught Exception:', err);
+        // Optionally exit here: process.exit(1)
+      });
+
+    } catch (err) {
+      console.error('Failed to start server:', err);
+      process.exit(1);
+    }
   }
-}
 
-start();
+  start();
+}
