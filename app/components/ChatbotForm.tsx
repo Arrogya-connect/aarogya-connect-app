@@ -124,8 +124,8 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
         const name = a.name || `attachment-${Date.now()}-${i}.jpg`; // Helper extension
         const mime = a.type === "video" ? "video/mp4" : "image/jpeg"; // simpler mime
 
-        // Debug Alert logic (can be removed later)
-        // Alert.alert("Debug", `Appending: ${name} size: ${uploadUri.length}`);
+        // Debug Alert logic
+        Alert.alert("Debug Upload", `File: ${name}\nSize: ${uploadUri.length} chars (path)`);
 
         form.append("attachments", {
           uri: uploadUri,
