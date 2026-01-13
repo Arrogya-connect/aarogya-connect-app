@@ -64,6 +64,11 @@ async function getRecord(req, res) {
 // Create a new record and save attachments to GridFS
 async function createRecord(req, res) {
   try {
+    console.log('createRecord request:', {
+      body: req.body,
+      filesCount: req.files ? req.files.length : 0,
+      files: req.files ? req.files.map(f => ({ orig: f.originalname, type: f.mimetype, size: f.size })) : []
+    });
     const userId = req.user._id;
     const summary = req.body.summary || '';
     const details = req.body.details || '';

@@ -9,7 +9,7 @@ const upload = multer({ storage, limits: { fileSize: 25 * 1024 * 1024 } }); // 2
 
 router.get('/', sessionAuth, listRecords);
 router.get('/:id', sessionAuth, getRecord);
-router.post('/', sessionAuth, upload.any(), createRecord);
+router.post('/', sessionAuth, upload.array('attachments'), createRecord);
 
 // stream attachment: GET /api/records/:id/attachment/:idx
 router.get('/:id/attachment/:idx', sessionAuth, streamAttachment);
