@@ -33,6 +33,7 @@ app.use('/api/appointments', appointmentsRoutes);
 
 // health
 app.get('/healthz', (req, res) => res.json({ ok: true }));
+app.get('/', (req, res) => res.send('Aarogya Connect Backend is Running on Vercel v2.0'));
 
 // error handler
 app.use((err, req, res, next) => {
