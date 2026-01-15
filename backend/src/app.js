@@ -31,6 +31,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/records', recordsRoutes);
 app.use('/api/appointments', appointmentsRoutes);
+app.use('/api/media', require('./routes/media'));
 
 // health
 app.get('/healthz', (req, res) => res.json({ ok: true }));

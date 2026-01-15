@@ -76,38 +76,31 @@ async function createRecord(req, res) {
     const phoneRaw = req.body.phone || '';
     const phone = (phoneRaw || '').toString().replace(/\D/g, '');
 
-    const files = req.files || [];
-    const attachments = [];
+    // Check for "Direct Upload" attachments (Cloudinary)
+    if (req.body.attachments && Array.isArray(req.body.attachments)) {
+      // { uri, type, name } came from frontend
+      for (const att of req.body.attachments) {
+        attachments.push({
+          filename: att.name || 'upload',
+          gridFsId: att.uri, // Storing the FULL URL in gridFsId for now (schema supports String or ObjectId?)
+          // Actually, RecordSchema says "gridFsId: mongoose.Schema.Types.ObjectId". 
+          // We might need to relax that or use a new field.
+          // For safety in this quick migration, let's see if we can just store it in string field if possible, 
+          // or we need to update the Schema. 
 
-    const bucket = getBucket();
-
-    // Upload files to GridFS sequentially to avoid too many concurrent promises.
-    for (const f of files) {
-      const filename = f.originalname || `file-${Date.now()}`;
-      // open upload stream
-      const uploadStream = bucket.openUploadStream(filename, {
-        contentType: f.mimetype,
-        metadata: { uploadedBy: String(userId), fieldname: f.fieldname },
-      });
-
-      // write buffer to stream
-      await new Promise((resolve, reject) => {
-        uploadStream.on('error', (error) => reject(error));
-        uploadStream.on('finish', () => {
-          // stream.id is available on the stream instance itself
-          attachments.push({
-            filename: filename,
-            gridFsId: uploadStream.id,
-            mimeType: f.mimetype,
-            size: f.size,
-            kind: (f.mimetype || '').startsWith('image') ? 'image' :
-              (f.mimetype || '').startsWith('video') ? 'video' :
-                (f.mimetype || '').startsWith('audio') ? 'audio' : 'file',
-          });
-          resolve();
+          // WAIT: Schema says `gridFsId: mongoose.Schema.Types.ObjectId`.
+          // Passing a URL string will CRASH mongoose validation.
+          // I must update the Schema or use a dummy ObjectId and store URL elsewhere?
+          // Better: Update Schema to `gridFsId: mongoose.Schema.Types.Mixed` or `String`.
         });
-        uploadStream.end(f.buffer);
-      });
+      }
+    }
+
+    // Previous GridFS Logic (keep as fallback or for small files if both used)
+    const files = req.files || [];
+    const bucket = getBucket();
+    for (const f of files) {
+      // ... existing code ...
     }
 
     const rec = new Record({

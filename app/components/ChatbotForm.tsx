@@ -114,79 +114,110 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
   const handleSubmit = async () => {
     if (!validate()) return;
 
-    // DEBUG: Pre-flight check
-    // Alert.alert("Debug Pre-Flight", `Submitting.\nAttachments State Count: ${attachments.length}\nNote: If this is 0, then no files are selected.`);
-
     try {
       const token = await AsyncStorage.getItem("sessionToken");
       if (!token) {
-        Alert.alert("Not logged in", "Please login to submit the query.");
+        Alert.alert("Not logged in", "Please login.");
         return;
       }
 
-      const form = new FormData();
-      form.append("queryNumber", queryNumber || "");
-      form.append("phone", phone || "");
-      form.append("summary", summary || "");
+      // 1. Get Upload Signature
+      const sigRes = await fetch(`${API_BASE}/api/media/signature`, {
+        headers: { "x-session-token": token },
+      });
+      const sigData = await sigRes.json();
+      if (!sigRes.ok || !sigData.ok) {
+        Alert.alert("Error", "Failed to start upload session.");
+        return;
+      }
+      const { signature, timestamp, cloudName, apiKey, folder } = sigData;
 
-      // attachments array: { uri, type, name }
+      // 2. Upload Files to Cloudinary
+      const uploadedAttachments: { uri: string; type: string; name: string }[] = [];
+
       for (let i = 0; i < attachments.length; i++) {
-        const a = attachments[i];
-        const uploadUri = await normalizeUriForUpload(a.uri);
-        if (!uploadUri) continue;
+        const item = attachments[i];
 
-        const name = a.name || `attachment-${Date.now()}-${i}.jpg`; // Helper extension
-        const mime = a.type === "video" ? "video/mp4" : "image/jpeg"; // simpler mime
+        // Ensure uri is ready
+        let uriToUpload = item.uri;
+        if (!uriToUpload.startsWith("file://")) {
+          uriToUpload = await normalizeUriForUpload(item.uri) || item.uri;
+        }
 
-        // console.log(`Appending file ${i}:`, name, uploadUri);
-
-        form.append("attachments", {
-          uri: uploadUri,
-          name: name,
-          type: mime,
+        const data = new FormData();
+        data.append("file", {
+          uri: uriToUpload,
+          type: item.type === 'video' ? 'video/mp4' : 'image/jpeg',
+          name: item.name || `file${i}`
         } as any);
+        data.append("api_key", apiKey);
+        data.append("timestamp", timestamp.toString());
+        data.append("signature", signature);
+        if (folder) data.append("folder", folder);
+
+        // Upload Endpoint based on type
+        const resourceType = item.type === "video" ? "video" : "image";
+        const cloudUrl = `https://api.cloudinary.com/v1_1/${cloudName}/${resourceType}/upload`;
+
+        console.log(`Uploading ${i + 1}/${attachments.length} to Cloudinary...`);
+        const uploadRes = await fetch(cloudUrl, {
+          method: "POST",
+          body: data,
+        });
+        const uploadJson = await uploadRes.json();
+
+        if (uploadJson.secure_url) {
+          uploadedAttachments.push({
+            uri: uploadJson.secure_url, // Store the CLOUD URL
+            type: resourceType,
+            name: item.name || "upload"
+          });
+        } else {
+          console.error("Cloudinary error:", uploadJson);
+          Alert.alert("Upload Failed", `Could not upload file ${i + 1}`);
+          return;
+        }
       }
 
+      // 3. Submit Record to Backend (JSON now, not FormData)
+      console.log("Submitting record with URLs:", uploadedAttachments);
 
-
-      console.log("Submitting chatbot query", {
-        attachmentsCount: attachments.length,
-        phone,
+      const payload = {
         queryNumber,
+        phone,
         summary,
-      });
+        attachments: uploadedAttachments // Sending URLs!
+      };
 
       const res = await fetch(`${API_BASE}/api/records`, {
         method: "POST",
         headers: {
           "x-session-token": token,
-          // DO NOT set Content-Type for multipart form-data.
+          "Content-Type": "application/json" // JSON!
         },
-        body: form,
+        body: JSON.stringify(payload),
       });
 
       const json = await res.json();
-      console.log("Chatbot submit response:", res.status, json);
+      console.log("Record submit response:", res.status, json);
 
       if (!res.ok || !json.ok) {
-        const err = json.error || "Submission failed";
-        Alert.alert("Error", err);
+        Alert.alert("Error", json.error || "Submission failed");
         return;
       }
 
-      Alert.alert(t.successTitle || "Submitted", "Your chatbot query was saved (pending).");
+      Alert.alert(t.successTitle || "Submitted", "Your query and videos/photos were uploaded successfully!");
 
-      // reset form fields
+      // Cleanup
       setQueryNumber("");
       setPhone("");
       setSummary("");
       setAttachments([]);
-
       setErrors({});
+
     } catch (err: any) {
       console.error("chatbot submit error", err);
-      const msg = err?.message || String(err);
-      Alert.alert("Network error", msg.includes("Network request failed") ? "Network request failed — check API_BASE and device/network." : msg);
+      Alert.alert("Error", err.message || "Network request failed");
     }
   };
 

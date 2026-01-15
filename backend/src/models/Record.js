@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const AttachmentSchema = new mongoose.Schema({
   filename: String,
-  gridFsId: mongoose.Schema.Types.ObjectId, // added
+  gridFsId: mongoose.Schema.Types.Mixed, // ObjectId (GridFS) or String (Cloudinary URL)
   mimeType: String,
   size: Number,
   kind: String,
