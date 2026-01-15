@@ -75,6 +75,7 @@ async function createRecord(req, res) {
     const queryNumber = req.body.queryNumber || null;
     const phoneRaw = req.body.phone || '';
     const phone = (phoneRaw || '').toString().replace(/\D/g, '');
+    const attachments = [];
 
     // Check for "Direct Upload" attachments (Cloudinary)
     if (req.body.attachments && Array.isArray(req.body.attachments)) {
