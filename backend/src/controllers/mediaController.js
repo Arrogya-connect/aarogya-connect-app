@@ -1,13 +1,12 @@
 const cloudinary = require('cloudinary').v2;
 
-// Configure Cloudinary explicitly if not picked up from env automatically, 
-// but CLOUDINARY_URL in env is usually sufficient. 
-// We parse it manually just to be safe or rely on auto-config.
-// However, for the signature, we need the api_secret explicitly available or via the SDK.
-
-if (process.env.CLOUDINARY_URL) {
-    // Cloudinary SDK auto-configures from this variable
-}
+// Configure Cloudinary explicitly 
+// (Hardcoded for immediate Vercel fix since .env isn't pushed)
+cloudinary.config({
+    cloud_name: 'dawhrba86',
+    api_key: '946915478358729',
+    api_secret: 'lgIobuR5rceViVorHgDKSBACJMQ'
+});
 
 async function getUploadSignature(req, res) {
     try {
@@ -26,8 +25,8 @@ async function getUploadSignature(req, res) {
             ok: true,
             signature,
             timestamp,
-            cloudName: cloudinary.config().cloud_name,
-            apiKey: cloudinary.config().api_key,
+            cloudName: 'dawhrba86',
+            apiKey: '946915478358729',
             folder
         });
     } catch (err) {
