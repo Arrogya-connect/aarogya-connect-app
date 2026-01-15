@@ -97,7 +97,7 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
       if (!finalUri.startsWith("file://")) {
         finalUri = "file://" + finalUri;
       }
-      console.log("Normalized URI:", finalUri);
+      // console.log("Normalized URI:", finalUri);
       return finalUri;
     } catch (e) {
       console.warn("normalizeUriForUpload failed", e, uri);
@@ -115,7 +115,7 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
     if (!validate()) return;
 
     // DEBUG: Pre-flight check
-    Alert.alert("Debug Pre-Flight", `Submitting.\nAttachments State Count: ${attachments.length}\nNote: If this is 0, then no files are selected.`);
+    // Alert.alert("Debug Pre-Flight", `Submitting.\nAttachments State Count: ${attachments.length}\nNote: If this is 0, then no files are selected.`);
 
     try {
       const token = await AsyncStorage.getItem("sessionToken");
@@ -138,8 +138,7 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
         const name = a.name || `attachment-${Date.now()}-${i}.jpg`; // Helper extension
         const mime = a.type === "video" ? "video/mp4" : "image/jpeg"; // simpler mime
 
-        console.log(`Appending file ${i}:`, name, uploadUri);
-        // Alert.alert("Debug Loop", `Processing file ${i+1}/${attachments.length}`);
+        // console.log(`Appending file ${i}:`, name, uploadUri);
 
         form.append("attachments", {
           uri: uploadUri,
