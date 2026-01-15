@@ -92,20 +92,21 @@ async function createRecord(req, res) {
 
       // write buffer to stream
       await new Promise((resolve, reject) => {
-        uploadStream.end(f.buffer, (err, file) => {
-          if (err) return reject(err);
-          // file is the file document object with _id, length, filename, etc.
+        uploadStream.on('error', (error) => reject(error));
+        uploadStream.on('finish', () => {
+          // stream.id is available on the stream instance itself
           attachments.push({
-            filename: file.filename,
-            gridFsId: file._id,       // store GridFS ObjectId
-            mimeType: file.contentType || f.mimetype,
-            size: file.length || f.size,
+            filename: filename,
+            gridFsId: uploadStream.id,
+            mimeType: f.mimetype,
+            size: f.size,
             kind: (f.mimetype || '').startsWith('image') ? 'image' :
               (f.mimetype || '').startsWith('video') ? 'video' :
                 (f.mimetype || '').startsWith('audio') ? 'audio' : 'file',
           });
           resolve();
         });
+        uploadStream.end(f.buffer);
       });
     }
 
