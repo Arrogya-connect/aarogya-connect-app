@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Render backend URL
 // export const API_BASE = 'http://localhost:4000'; // For local testing
-export const API_BASE = 'https://aarogya-backend-4amu.onrender.com';
+export const API_BASE = 'https://aarogya-backend-delta.vercel.app';
 
 export const getAuthHeaders = async () => {
     const token = await AsyncStorage.getItem('sessionToken');

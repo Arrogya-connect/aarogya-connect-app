@@ -91,11 +91,22 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
       const filename = uri.split("/").pop() || `file-${Date.now()}`;
       const dest = `${FileSystem.cacheDirectory}${Date.now()}-${filename}`;
       await FileSystem.copyAsync({ from: uri, to: dest });
-      return dest;
+
+      // ENSURE protocol exists
+      let finalUri = dest;
+      if (!finalUri.startsWith("file://")) {
+        finalUri = "file://" + finalUri;
+      }
+      console.log("Normalized URI:", finalUri);
+      return finalUri;
     } catch (e) {
       console.warn("normalizeUriForUpload failed", e, uri);
-      // Fallback: return original URI if copy fails (might work if it's already file://)
-      return uri;
+      // Fallback: return original URI, ensure protocol
+      let fallback = uri;
+      if (!fallback.startsWith("file://") && !fallback.startsWith("content://")) {
+        fallback = "file://" + fallback;
+      }
+      return fallback;
     }
   }
 

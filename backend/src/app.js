@@ -13,6 +13,7 @@ const appointmentsRoutes = require('./routes/appointments');
 const app = express();
 
 // Middlewares
+app.set('trust proxy', 1); // Trust first proxy (Vercel)
 app.use(helmet());
 app.use(cors()); // for demo you can restrict to frontend origin later
 app.use(express.json());
