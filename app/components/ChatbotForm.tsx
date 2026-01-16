@@ -1,10 +1,10 @@
-
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as FileSystem from "expo-file-system";
 import * as ImagePicker from "expo-image-picker";
 import React, { JSX, useState } from "react";
 import {
+  ActivityIndicator,
   Alert,
   FlatList,
   Image,
@@ -14,11 +14,10 @@ import {
   View
 } from "react-native";
 import { styles } from "../../styles/dashboardStyles";
+import { API_BASE } from "../constants/api";
 import { CHATBOT_TEXT, Lang } from "../constants/chatbotText";
 
 type MediaItem = { uri: string; type: "image" | "video"; name?: string };
-
-import { API_BASE } from "../constants/api";
 
 export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
   const t = CHATBOT_TEXT[lang];
@@ -29,7 +28,7 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
   const [summary, setSummary] = useState("");
   const [attachments, setAttachments] = useState<MediaItem[]>([]);
   const [errors, setErrors] = useState<{ [k: string]: string }>({});
-
+  const [loading, setLoading] = useState(false);
 
   const sanitizeDigits = (text: string) => text.replace(/\D/g, "");
 
@@ -65,10 +64,6 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
   };
 
 
-
-
-
-
   // ---------- Validation ----------
   const validate = () => {
     const e: { [k: string]: string } = {};
@@ -83,7 +78,6 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
   };
 
   // ---------- Helper to normalize URIs for upload ----------
-  // ---------- Helper to normalize URIs for upload ----------
   async function normalizeUriForUpload(uri: string | null) {
     if (!uri) return null;
     try {
@@ -97,7 +91,6 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
       if (!finalUri.startsWith("file://")) {
         finalUri = "file://" + finalUri;
       }
-      // console.log("Normalized URI:", finalUri);
       return finalUri;
     } catch (e) {
       console.warn("normalizeUriForUpload failed", e, uri);
@@ -113,11 +106,13 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
   // ---------- Submit & Backend Integration ----------
   const handleSubmit = async () => {
     if (!validate()) return;
+    setLoading(true);
 
     try {
       const token = await AsyncStorage.getItem("sessionToken");
       if (!token) {
         Alert.alert("Not logged in", "Please login.");
+        setLoading(false);
         return;
       }
 
@@ -128,6 +123,7 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
       const sigData = await sigRes.json();
       if (!sigRes.ok || !sigData.ok) {
         Alert.alert("Error", "Failed to start upload session.");
+        setLoading(false);
         return;
       }
       const { signature, timestamp, cloudName, apiKey, folder } = sigData;
@@ -175,6 +171,7 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
         } else {
           console.error("Cloudinary error:", uploadJson);
           Alert.alert("Upload Failed", `Could not upload file ${i + 1}`);
+          setLoading(false);
           return;
         }
       }
@@ -203,10 +200,12 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
 
       if (!res.ok || !json.ok) {
         Alert.alert("Error", json.error || "Submission failed");
+        setLoading(false);
         return;
       }
 
       Alert.alert(t.successTitle || "Submitted", "Your query and videos/photos were uploaded successfully!");
+      setLoading(false);
 
       // Cleanup
       setQueryNumber("");
@@ -218,6 +217,7 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
     } catch (err: any) {
       console.error("chatbot submit error", err);
       Alert.alert("Error", err.message || "Network request failed");
+      setLoading(false);
     }
   };
 
@@ -320,12 +320,20 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
         />
       </View>
 
-
-
       {/* Submit Button */}
-      <TouchableOpacity style={[styles.apptButton, styles.chatbotSendBtn]} onPress={handleSubmit}>
-        <Feather name="send" size={16} color="#fff" style={{ marginRight: 8 }} />
-        <Text style={styles.apptButtonText}>{t.submit}</Text>
+      <TouchableOpacity
+        style={[styles.apptButton, styles.chatbotSendBtn, loading && { opacity: 0.7 }]}
+        onPress={handleSubmit}
+        disabled={loading}
+      >
+        {loading ? (
+          <ActivityIndicator size="small" color="#fff" />
+        ) : (
+          <>
+            <Feather name="send" size={16} color="#fff" style={{ marginRight: 8 }} />
+            <Text style={styles.apptButtonText}>{t.submit}</Text>
+          </>
+        )}
       </TouchableOpacity>
     </View>
   );

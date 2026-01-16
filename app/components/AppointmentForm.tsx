@@ -1,13 +1,18 @@
 // app/components/AppointmentForm.tsx
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import DateTimePicker from "@react-native-community/datetimepicker";
 import React, { useState } from "react";
 import {
+  ActivityIndicator,
   Alert,
+  Modal,
+  Platform,
   Text,
   TextInput,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   useColorScheme,
-  View,
+  View
 } from "react-native";
 import { styles } from "../../styles/dashboardStyles";
 import { API_BASE } from "../constants/api";
@@ -17,16 +22,26 @@ export default function AppointmentForm({ lang }: { lang: Lang }) {
   const t = APPOINTMENT_TEXT[lang];
 
   const isDark = useColorScheme() === "dark";
-  const textColor = isDark ? " #111827#FFFFFF" : "#FFFFFF";
-  const placeholderColor = isDark ? "#D1D5DB" : "#9CA3AF";
+  // App styles are hardcoded to Light Theme (#F9FAFB background), so we must force Dark Text.
+  const textColor = "#111827";
+  const placeholderColor = "#9CA3AF"; // Force standard placeholder color too for consistency
 
   const [fullName, setFullName] = useState("");
   const [mobile, setMobile] = useState("");
   const [age, setAge] = useState("");
   const [problem, setProblem] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-  // API_BASE imported from constants
+
+  // Date/Time State
+  const [date, setDate] = useState(""); // Stores "DD/MM/YYYY" string for compatibility
+  const [time, setTime] = useState(""); // Stores "HH:MM AM/PM" string for compatibility
+
+  const [dateObj, setDateObj] = useState(new Date()); // Internal date object
+  const [timeObj, setTimeObj] = useState(new Date()); // Internal time object
+
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [showTimePicker, setShowTimePicker] = useState(false);
+
+  const [loading, setLoading] = useState(false);
 
   const [errors, setErrors] = useState<{
     fullName?: string;
@@ -78,11 +93,14 @@ export default function AppointmentForm({ lang }: { lang: Lang }) {
   const handleSubmit = async () => {
     if (!validate()) return;
 
+    setLoading(true);
+
     try {
       // ensure user is logged in
       const token = await AsyncStorage.getItem("sessionToken");
       if (!token) {
         Alert.alert("Not logged in", "Please login to book an appointment.");
+        setLoading(false);
         return;
       }
 
@@ -109,12 +127,13 @@ export default function AppointmentForm({ lang }: { lang: Lang }) {
       if (!res.ok || !json.ok) {
         const err = json.error || "Failed to create appointment";
         Alert.alert("Error", err);
+        setLoading(false);
         return;
       }
 
       Alert.alert(t.successTitle, t.successMsg);
 
-      // reset form (same as before)
+      // reset form
       setFullName("");
       setMobile("");
       setAge("");
@@ -122,11 +141,76 @@ export default function AppointmentForm({ lang }: { lang: Lang }) {
       setDate("");
       setTime("");
       setErrors({});
+      setLoading(false);
     } catch (err) {
       console.error("create appointment error", err);
       Alert.alert("Error", "Submission failed. Please try again.");
+      setLoading(false);
     }
   };
+
+  const onDateChange = (event: any, selectedDate?: Date) => {
+    // Android: Event type "set" closes picker automatically.
+    // iOS: Fires on every scroll.
+
+    if (Platform.OS === 'android') {
+      setShowDatePicker(false);
+      if (selectedDate) {
+        setDateObj(selectedDate);
+        // Format: DD/MM/YYYY
+        const d = selectedDate.getDate().toString().padStart(2, "0");
+        const m = (selectedDate.getMonth() + 1).toString().padStart(2, "0");
+        const y = selectedDate.getFullYear();
+        setDate(`${d}/${m}/${y}`);
+      }
+    } else {
+      if (selectedDate) {
+        setDateObj(selectedDate);
+      }
+    }
+  };
+
+  const confirmIosDate = () => {
+    setShowDatePicker(false);
+    const selectedDate = dateObj;
+    const d = selectedDate.getDate().toString().padStart(2, "0");
+    const m = (selectedDate.getMonth() + 1).toString().padStart(2, "0");
+    const y = selectedDate.getFullYear();
+    setDate(`${d}/${m}/${y}`);
+  };
+
+  const onTimeChange = (event: any, selectedTime?: Date) => {
+    if (Platform.OS === 'android') {
+      setShowTimePicker(false);
+      if (selectedTime) {
+        setTimeObj(selectedTime);
+        // Format: HH:MM AM/PM
+        let hours = selectedTime.getHours();
+        const minutes = selectedTime.getMinutes().toString().padStart(2, "0");
+        const ampm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        setTime(`${hours}:${minutes} ${ampm}`);
+      }
+    } else {
+      // iOS: update internal object only
+      if (selectedTime) {
+        setTimeObj(selectedTime);
+      }
+    }
+  };
+
+  const confirmIosTime = () => {
+    setShowTimePicker(false);
+    const selectedTime = timeObj;
+    let hours = selectedTime.getHours();
+    const minutes = selectedTime.getMinutes().toString().padStart(2, "0");
+    const ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    setTime(`${hours}:${minutes} ${ampm}`);
+  };
+
   return (
     <View style={styles.apptCard}>
       <Text style={styles.apptTitle}>{t.title}</Text>
@@ -193,36 +277,125 @@ export default function AppointmentForm({ lang }: { lang: Lang }) {
       {/* DATE */}
       <View style={styles.apptFieldGroup}>
         <Text style={styles.apptLabel}>{t.date}</Text>
-        <TextInput
-          style={[styles.apptInput, { color: textColor }]}
-          placeholder={t.datePh}
-          placeholderTextColor={placeholderColor}
-          value={date}
-          onChangeText={setDate}
-        />
+        <TouchableOpacity onPress={() => setShowDatePicker(true)} activeOpacity={0.8}>
+          <View pointerEvents="none">
+            <TextInput
+              style={[styles.apptInput, { color: textColor }]}
+              placeholder={t.datePh} // e.g. "DD/MM/YYYY"
+              placeholderTextColor={placeholderColor}
+              value={date}
+            />
+          </View>
+        </TouchableOpacity>
         {errors.date && <Text style={styles.apptError}>{errors.date}</Text>}
       </View>
+
+      {showDatePicker && Platform.OS === 'android' && (
+        <DateTimePicker
+          value={dateObj}
+          mode="date"
+          display="default"
+          onChange={onDateChange}
+          minimumDate={new Date()}
+        />
+      )}
+
+      {Platform.OS === 'ios' && (
+        <Modal transparent animationType="slide" visible={showDatePicker}>
+          <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.3)' }}>
+            <TouchableWithoutFeedback onPress={() => setShowDatePicker(false)}>
+              <View style={{ flex: 1 }} />
+            </TouchableWithoutFeedback>
+            <View style={{ backgroundColor: 'white', padding: 16, borderTopLeftRadius: 16, borderTopRightRadius: 16 }}>
+              {/* Toolbar */}
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 12 }}>
+                <TouchableOpacity onPress={() => setShowDatePicker(false)}>
+                  <Text style={{ color: '#EF4444', fontWeight: '600' }}>Cancel</Text>
+                </TouchableOpacity>
+                <Text style={{ fontWeight: '700', fontSize: 16 }}>Select Date</Text>
+                <TouchableOpacity onPress={confirmIosDate}>
+                  <Text style={{ color: '#2563EB', fontWeight: '800' }}>Confirm</Text>
+                </TouchableOpacity>
+              </View>
+              <DateTimePicker
+                value={dateObj}
+                mode="date"
+                display="spinner"
+                onChange={onDateChange}
+                minimumDate={new Date()}
+                textColor="black"
+              />
+            </View>
+          </View>
+        </Modal>
+      )}
 
       {/* TIME */}
       <View style={styles.apptFieldGroup}>
         <Text style={styles.apptLabel}>{t.time}</Text>
-        <TextInput
-          style={[styles.apptInput, { color: textColor }]}
-          placeholder={t.timePh}
-          placeholderTextColor={placeholderColor}
-          value={time}
-          onChangeText={setTime}
-        />
+        <TouchableOpacity onPress={() => setShowTimePicker(true)} activeOpacity={0.8}>
+          <View pointerEvents="none">
+            <TextInput
+              style={[styles.apptInput, { color: textColor }]}
+              placeholder={t.timePh}
+              placeholderTextColor={placeholderColor}
+              value={time}
+            />
+          </View>
+        </TouchableOpacity>
         {errors.time && <Text style={styles.apptError}>{errors.time}</Text>}
       </View>
 
+      {showTimePicker && Platform.OS === 'android' && (
+        <DateTimePicker
+          value={timeObj}
+          mode="time"
+          display="default"
+          onChange={onTimeChange}
+        />
+      )}
+
+      {Platform.OS === 'ios' && (
+        <Modal transparent animationType="slide" visible={showTimePicker}>
+          <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.3)' }}>
+            <TouchableWithoutFeedback onPress={() => setShowTimePicker(false)}>
+              <View style={{ flex: 1 }} />
+            </TouchableWithoutFeedback>
+            <View style={{ backgroundColor: 'white', padding: 16, borderTopLeftRadius: 16, borderTopRightRadius: 16 }}>
+              {/* Toolbar */}
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 12 }}>
+                <TouchableOpacity onPress={() => setShowTimePicker(false)}>
+                  <Text style={{ color: '#EF4444', fontWeight: '600' }}>Cancel</Text>
+                </TouchableOpacity>
+                <Text style={{ fontWeight: '700', fontSize: 16 }}>Select Time</Text>
+                <TouchableOpacity onPress={confirmIosTime}>
+                  <Text style={{ color: '#2563EB', fontWeight: '800' }}>Confirm</Text>
+                </TouchableOpacity>
+              </View>
+              <DateTimePicker
+                value={timeObj}
+                mode="time"
+                display="spinner"
+                onChange={onTimeChange}
+                textColor="black"
+              />
+            </View>
+          </View>
+        </Modal>
+      )}
+
       {/* SUBMIT */}
       <TouchableOpacity
-        style={styles.apptButton}
+        style={[styles.apptButton, loading && { opacity: 0.7 }]}
         activeOpacity={0.9}
         onPress={handleSubmit}
+        disabled={loading}
       >
-        <Text style={styles.apptButtonText}>{t.submit}</Text>
+        {loading ? (
+          <ActivityIndicator size="small" color="#FFFFFF" />
+        ) : (
+          <Text style={styles.apptButtonText}>{t.submit}</Text>
+        )}
       </TouchableOpacity>
     </View>
   );

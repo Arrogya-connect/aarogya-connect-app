@@ -1,13 +1,6 @@
 // backend/src/controllers/recordController.js
-const path = require('path');
 const mongoose = require('mongoose');
-const { GridFSBucket, ObjectId } = require('mongodb');
 const Record = require('../models/Record');
-
-function getBucket() {
-  const db = mongoose.connection.db;
-  return new GridFSBucket(db, { bucketName: 'uploads' });
-}
 
 async function listRecords(req, res) {
   try {
@@ -29,15 +22,15 @@ async function listRecords(req, res) {
       _id: it._id,
       summary: it.summary,
       queryNumber: it.queryNumber || null,
-      phone: it.phone, // Added
-      details: it.details, // Added just in case
+      phone: it.phone,
+      details: it.details,
       status: it.status,
-      doctorResponse: it.doctorResponse, // Added
-      doctorName: it.doctorName, // Added
-      doctorDetails: it.doctorDetails, // Added
+      doctorResponse: it.doctorResponse,
+      doctorName: it.doctorName,
+      doctorDetails: it.doctorDetails,
       createdAt: it.createdAt,
       attachmentPreview: it.attachments && it.attachments.length ? it.attachments[0] : null,
-      attachments: it.attachments, // Added to ensure full attachment list if needed by UI
+      attachments: it.attachments,
     }));
 
     return res.json({ ok: true, data, meta: { total, page, limit } });
@@ -61,14 +54,11 @@ async function getRecord(req, res) {
   }
 }
 
-// Create a new record and save attachments to GridFS
+// Create a new record (JSON only, no multipart/GridFS)
 async function createRecord(req, res) {
   try {
-    console.log('createRecord request:', {
-      body: req.body,
-      filesCount: req.files ? req.files.length : 0,
-      files: req.files ? req.files.map(f => ({ orig: f.originalname, type: f.mimetype, size: f.size })) : []
-    });
+    console.log('createRecord request body:', req.body);
+
     const userId = req.user._id;
     const summary = req.body.summary || '';
     const details = req.body.details || '';
@@ -77,31 +67,20 @@ async function createRecord(req, res) {
     const phone = (phoneRaw || '').toString().replace(/\D/g, '');
     const attachments = [];
 
-    // Check for "Direct Upload" attachments (Cloudinary)
+    // Expecting "Direct Upload" attachments (Cloudinary URLs)
     if (req.body.attachments && Array.isArray(req.body.attachments)) {
-      // { uri, type, name } came from frontend
       for (const att of req.body.attachments) {
-        attachments.push({
-          filename: att.name || 'upload',
-          gridFsId: att.uri, // Storing the FULL URL in gridFsId for now (schema supports String or ObjectId?)
-          // Actually, RecordSchema says "gridFsId: mongoose.Schema.Types.ObjectId". 
-          // We might need to relax that or use a new field.
-          // For safety in this quick migration, let's see if we can just store it in string field if possible, 
-          // or we need to update the Schema. 
-
-          // WAIT: Schema says `gridFsId: mongoose.Schema.Types.ObjectId`.
-          // Passing a URL string will CRASH mongoose validation.
-          // I must update the Schema or use a dummy ObjectId and store URL elsewhere?
-          // Better: Update Schema to `gridFsId: mongoose.Schema.Types.Mixed` or `String`.
-        });
+        // att: { uri: "https://...", type: "image", name: "..." }
+        if (att.uri) {
+          attachments.push({
+            filename: att.name || 'upload',
+            gridFsId: att.uri, // Storing the Cloudinary URL here
+            mimeType: att.type === 'video' ? 'video/mp4' : 'image/jpeg',
+            size: 0,
+            kind: (att.type || '').startsWith('video') ? 'video' : 'image',
+          });
+        }
       }
-    }
-
-    // Previous GridFS Logic (keep as fallback or for small files if both used)
-    const files = req.files || [];
-    const bucket = getBucket();
-    for (const f of files) {
-      // ... existing code ...
     }
 
     const rec = new Record({
@@ -118,19 +97,18 @@ async function createRecord(req, res) {
 
     return res.status(201).json({ ok: true, record: { id: rec._id, queryNumber: rec.queryNumber, status: rec.status } });
   } catch (err) {
-    console.error('createRecord (GridFS) error', err);
+    console.error('createRecord error', err);
     return res.status(500).json({ ok: false, error: 'server error' });
   }
 }
 
-// Stream a specific attachment by index from GridFS (protected route)
+// Stream (Redirect) a specific attachment by index
 async function streamAttachment(req, res) {
   try {
-    const { id, idx } = req.params; // id = record id, idx = attachment index
+    const { id, idx } = req.params;
     const rec = await Record.findById(id).lean();
     if (!rec) return res.status(404).json({ ok: false, error: 'record not found' });
 
-    // authorization: only owner or certain roles; for now allow owner
     if (String(rec.userId) !== String(req.user._id)) {
       return res.status(403).json({ ok: false, error: 'forbidden' });
     }
@@ -143,20 +121,14 @@ async function streamAttachment(req, res) {
     const att = rec.attachments[index];
     if (!att.gridFsId) return res.status(404).json({ ok: false, error: 'attachment not available' });
 
-    const bucket = getBucket();
-    const fileId = typeof att.gridFsId === 'string' ? new ObjectId(att.gridFsId) : att.gridFsId;
+    // Handle Cloudinary / External URLs
+    if (typeof att.gridFsId === 'string' && att.gridFsId.startsWith('http')) {
+      return res.redirect(att.gridFsId);
+    }
 
-    const downloadStream = bucket.openDownloadStream(fileId);
+    // GridFS support removed. Old files are no longer accessible.
+    return res.status(410).json({ ok: false, error: 'Legacy file storage not supported' });
 
-    res.setHeader('Content-Type', att.mimeType || 'application/octet-stream');
-    res.setHeader('Content-Disposition', `inline; filename="${att.filename || 'file'}"`);
-
-    downloadStream.on('error', (err) => {
-      console.error('GridFS download error', err);
-      res.status(500).end();
-    });
-
-    downloadStream.pipe(res);
   } catch (err) {
     console.error('streamAttachment error', err);
     return res.status(500).json({ ok: false, error: 'server error' });
