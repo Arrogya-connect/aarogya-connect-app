@@ -1,0 +1,4302 @@
+[
+    {
+        "id": "F001",
+        "category": "infectious",
+        "guard_keywords": [
+            "fever",
+            "high fever",
+            "low grade fever",
+            "temperature",
+            "feverish",
+            "viral",
+            "infection",
+            "sick"
+        ],
+        "primary_symptoms": [
+            "fever",
+            "mild body pain"
+        ],
+        "secondary_symptoms": [
+            "fatigue",
+            "headache",
+            "weakness",
+            "chills"
+        ],
+        "possible_disease": "Viral Fever",
+        "doctor_type": "General Physician",
+        "severity_hint": "low",
+        "warning_signs": [
+            "fever lasting more than 3 days",
+            "very high fever",
+            "severe weakness",
+            "continuous vomiting"
+        ],
+        "self_care": [
+            "drink plenty of fluids",
+            "take adequate rest",
+            "monitor body temperature regularly"
+        ],
+        "age_group": [
+            "adult",
+            "child"
+        ]
+    },
+    {
+        "id": "F002",
+        "category": "infectious",
+        "guard_keywords": [
+            "flu",
+            "influenza",
+            "cold and fever",
+            "viral flu",
+            "seasonal flu",
+            "fever with cold",
+            "fever with cough",
+            "body pain with fever"
+        ],
+        "primary_symptoms": [
+            "fever",
+            "cough",
+            "runny nose",
+            "cold"
+        ],
+        "secondary_symptoms": [
+            "body pain",
+            "fatigue",
+            "sore throat",
+            "chills",
+            "headache"
+        ],
+        "possible_disease": "Influenza (Flu)",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "fever lasting more than 3 days",
+            "difficulty breathing",
+            "chest discomfort",
+            "severe weakness"
+        ],
+        "self_care": [
+            "drink plenty of fluids",
+            "take adequate rest",
+            "avoid cold exposure",
+            "monitor fever regularly"
+        ],
+        "age_group": [
+            "adult",
+            "child"
+        ]
+    },
+    {
+        "id": "F003",
+        "category": "infectious",
+        "guard_keywords": [
+            "dengue",
+            "high fever with body pain",
+            "platelet",
+            "platelet low",
+            "severe body pain",
+            "bone pain fever",
+            "mosquito fever"
+        ],
+        "primary_symptoms": [
+            "high fever",
+            "severe body pain",
+            "joint pain"
+        ],
+        "secondary_symptoms": [
+            "pain behind eyes",
+            "skin rash",
+            "nausea",
+            "vomiting",
+            "fatigue"
+        ],
+        "possible_disease": "Dengue Fever",
+        "doctor_type": "General Physician",
+        "severity_hint": "high",
+        "warning_signs": [
+            "platelet count falling",
+            "persistent vomiting",
+            "bleeding from nose or gums",
+            "severe abdominal pain"
+        ],
+        "self_care": [
+            "drink plenty of fluids",
+            "take complete bed rest",
+            "monitor fever and symptoms closely"
+        ],
+        "age_group": [
+            "adult",
+            "child"
+        ]
+    },
+    {
+        "id": "F004",
+        "category": "infectious",
+        "guard_keywords": [
+            "typhoid",
+            "fever more than 1 week",
+            "long lasting fever",
+            "continuous fever",
+            "fever with weakness",
+            "stomach pain with fever"
+        ],
+        "primary_symptoms": [
+            "prolonged fever",
+            "weakness",
+            "fatigue"
+        ],
+        "secondary_symptoms": [
+            "abdominal pain",
+            "loss of appetite",
+            "headache",
+            "constipation",
+            "diarrhea"
+        ],
+        "possible_disease": "Typhoid Fever",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "fever lasting more than 7 days",
+            "severe abdominal pain",
+            "confusion",
+            "persistent vomiting"
+        ],
+        "self_care": [
+            "take adequate rest",
+            "drink clean fluids",
+            "avoid outside food"
+        ],
+        "age_group": [
+            "adult",
+            "child"
+        ]
+    },
+    {
+        "id": "F005",
+        "category": "infectious",
+        "guard_keywords": [
+            "malaria",
+            "fever with chills",
+            "shivering fever",
+            "cold and hot fever",
+            "sweating after fever",
+            "mosquito bite fever"
+        ],
+        "primary_symptoms": [
+            "fever with chills",
+            "shivering",
+            "excessive sweating"
+        ],
+        "secondary_symptoms": [
+            "headache",
+            "vomiting",
+            "body pain",
+            "fatigue"
+        ],
+        "possible_disease": "Malaria",
+        "doctor_type": "General Physician",
+        "severity_hint": "high",
+        "warning_signs": [
+            "repeated fever with chills",
+            "vomiting everything",
+            "extreme weakness",
+            "yellow eyes or urine"
+        ],
+        "self_care": [
+            "drink plenty of fluids",
+            "take proper rest",
+            "avoid mosquito exposure"
+        ],
+        "age_group": [
+            "adult",
+            "child"
+        ]
+    },
+    {
+        "id": "D001",
+        "category": "gastrointestinal",
+        "guard_keywords": [
+            "stomach pain",
+            "tummy pain",
+            "belly pain",
+            "gastric pain",
+            "burning stomach",
+            "acidity pain"
+        ],
+        "primary_symptoms": [
+            "stomach pain",
+            "upper abdominal pain",
+            "burning sensation in stomach"
+        ],
+        "secondary_symptoms": [
+            "bloating",
+            "nausea",
+            "gas",
+            "loss of appetite"
+        ],
+        "possible_disease": "Gastritis",
+        "doctor_type": "Gastroenterologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "severe stomach pain",
+            "vomiting blood",
+            "black stools",
+            "pain lasting more than 3 days"
+        ],
+        "self_care": [
+            "avoid spicy and oily food",
+            "eat small frequent meals",
+            "do not skip meals"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "D002",
+        "category": "gastrointestinal",
+        "guard_keywords": [
+            "acid",
+            "acidity",
+            "heartburn",
+            "burning chest",
+            "chest burning after food",
+            "sour burps",
+            "acid reflux",
+            "gastric reflux"
+        ],
+        "primary_symptoms": [
+            "burning sensation in chest",
+            "acid coming to throat",
+            "upper stomach pain"
+        ],
+        "secondary_symptoms": [
+            "sour taste in mouth",
+            "burping",
+            "bloating",
+            "nausea"
+        ],
+        "possible_disease": "GERD / Acid Reflux",
+        "doctor_type": "Gastroenterologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "chest pain not relieved by antacids",
+            "difficulty swallowing",
+            "persistent vomiting",
+            "unintentional weight loss"
+        ],
+        "self_care": [
+            "avoid spicy and oily food",
+            "do not lie down immediately after meals",
+            "eat smaller frequent meals",
+            "avoid late night eating"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "D003",
+        "category": "gastrointestinal",
+        "guard_keywords": [
+            "food poisoning",
+            "vomiting",
+            "loose motion",
+            "diarrhea",
+            "stomach upset after food",
+            "bad food",
+            "outside food problem",
+            "restaurant food sickness"
+        ],
+        "primary_symptoms": [
+            "stomach pain",
+            "vomiting",
+            "loose motion"
+        ],
+        "secondary_symptoms": [
+            "fever",
+            "weakness",
+            "dehydration",
+            "nausea"
+        ],
+        "possible_disease": "Food Poisoning",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "continuous vomiting",
+            "blood in stool",
+            "severe dehydration",
+            "high fever"
+        ],
+        "self_care": [
+            "drink oral rehydration solution",
+            "avoid solid food temporarily",
+            "take adequate rest",
+            "drink clean water only"
+        ],
+        "age_group": [
+            "adult",
+            "child"
+        ]
+    },
+    {
+        "id": "D004",
+        "category": "gastrointestinal",
+        "guard_keywords": [
+            "appendix",
+            "lower right stomach pain",
+            "right lower abdomen pain",
+            "pain near navel moving right",
+            "sharp stomach pain right side"
+        ],
+        "primary_symptoms": [
+            "lower right abdominal pain",
+            "sharp stomach pain"
+        ],
+        "secondary_symptoms": [
+            "loss of appetite",
+            "vomiting",
+            "fever",
+            "nausea"
+        ],
+        "possible_disease": "Appendicitis",
+        "doctor_type": "General Surgeon",
+        "severity_hint": "emergency",
+        "warning_signs": [
+            "severe pain in lower right abdomen",
+            "pain worsening on movement",
+            "vomiting with pain",
+            "fever with abdominal pain"
+        ],
+        "self_care": [
+            "do not eat or drink",
+            "avoid painkillers without doctor advice",
+            "seek emergency medical care immediately"
+        ],
+        "age_group": [
+            "adult",
+            "child"
+        ]
+    },
+    {
+        "id": "D005",
+        "category": "cardiac",
+        "guard_keywords": [
+            "chest pain",
+            "chest pressure",
+            "tightness in chest",
+            "chest heaviness",
+            "pain while walking",
+            "pain relieved by rest"
+        ],
+        "primary_symptoms": [
+            "chest pressure",
+            "tightness in chest"
+        ],
+        "secondary_symptoms": [
+            "breathlessness",
+            "sweating",
+            "fatigue",
+            "jaw pain"
+        ],
+        "possible_disease": "Angina",
+        "doctor_type": "Cardiologist",
+        "severity_hint": "high",
+        "warning_signs": [
+            "chest pain lasting more than 10 minutes",
+            "pain spreading to left arm or jaw",
+            "breathlessness at rest",
+            "sudden sweating with chest pain"
+        ],
+        "self_care": [
+            "stop physical activity immediately",
+            "sit and rest",
+            "seek medical evaluation urgently"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "D006",
+        "category": "cardiac",
+        "guard_keywords": [
+            "heart attack",
+            "severe chest pain",
+            "left arm pain",
+            "crushing chest pain",
+            "pain spreading to jaw",
+            "sudden chest pain",
+            "sweating and chest pain"
+        ],
+        "primary_symptoms": [
+            "severe chest pain",
+            "left arm pain",
+            "chest tightness"
+        ],
+        "secondary_symptoms": [
+            "sweating",
+            "vomiting",
+            "breathlessness",
+            "anxiety",
+            "dizziness"
+        ],
+        "possible_disease": "Heart Attack",
+        "doctor_type": "Emergency / Cardiologist",
+        "severity_hint": "emergency",
+        "warning_signs": [
+            "severe chest pain lasting more than 5 minutes",
+            "pain spreading to arm, jaw, or back",
+            "cold sweating",
+            "sudden shortness of breath"
+        ],
+        "self_care": [
+            "call emergency services immediately",
+            "do not delay medical help",
+            "keep the patient calm and seated"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "D007",
+        "category": "neurological",
+        "guard_keywords": [
+            "headache",
+            "severe headache",
+            "one side headache",
+            "throbbing headache",
+            "head pain",
+            "head pain with nausea",
+            "light sensitivity headache"
+        ],
+        "primary_symptoms": [
+            "headache",
+            "throbbing head pain",
+            "one sided head pain"
+        ],
+        "secondary_symptoms": [
+            "nausea",
+            "vomiting",
+            "sensitivity to light",
+            "sensitivity to sound"
+        ],
+        "possible_disease": "Migraine",
+        "doctor_type": "Neurologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "headache worsening over time",
+            "headache with confusion",
+            "sudden severe headache"
+        ],
+        "self_care": [
+            "rest in a dark quiet room",
+            "avoid bright light and loud noise",
+            "maintain regular sleep"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "D008",
+        "category": "neurological",
+        "guard_keywords": [
+            "dizziness",
+            "spinning sensation",
+            "room spinning",
+            "vertigo",
+            "balance problem",
+            "head spinning"
+        ],
+        "primary_symptoms": [
+            "spinning sensation",
+            "dizziness",
+            "loss of balance"
+        ],
+        "secondary_symptoms": [
+            "vomiting",
+            "nausea",
+            "sweating",
+            "ear fullness"
+        ],
+        "possible_disease": "Vertigo",
+        "doctor_type": "ENT / Neurologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "vertigo with speech difficulty",
+            "vertigo with weakness in limbs",
+            "sudden severe dizziness"
+        ],
+        "self_care": [
+            "avoid sudden head movements",
+            "sit or lie down during dizziness",
+            "stay hydrated"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "D009",
+        "category": "respiratory",
+        "guard_keywords": [
+            "cough",
+            "cold",
+            "runny nose",
+            "blocked nose",
+            "sneezing",
+            "throat irritation"
+        ],
+        "primary_symptoms": [
+            "cough",
+            "runny nose",
+            "blocked nose"
+        ],
+        "secondary_symptoms": [
+            "sore throat",
+            "mild fever",
+            "sneezing",
+            "fatigue"
+        ],
+        "possible_disease": "Common Cold",
+        "doctor_type": "General Physician",
+        "severity_hint": "low",
+        "warning_signs": [
+            "fever lasting more than 3 days",
+            "difficulty breathing",
+            "chest pain"
+        ],
+        "self_care": [
+            "drink warm fluids",
+            "take adequate rest",
+            "avoid cold exposure"
+        ],
+        "age_group": [
+            "adult",
+            "child"
+        ]
+    },
+    {
+        "id": "D010",
+        "category": "respiratory",
+        "guard_keywords": [
+            "asthma",
+            "breathlessness",
+            "shortness of breath",
+            "difficulty breathing",
+            "wheezing",
+            "chest tightness",
+            "breathing problem"
+        ],
+        "primary_symptoms": [
+            "breathlessness",
+            "wheezing"
+        ],
+        "secondary_symptoms": [
+            "chest tightness",
+            "night cough",
+            "fast breathing"
+        ],
+        "possible_disease": "Asthma",
+        "doctor_type": "Pulmonologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "severe breathlessness",
+            "unable to speak full sentences",
+            "blue lips or fingers"
+        ],
+        "self_care": [
+            "avoid dust and smoke",
+            "use prescribed inhaler",
+            "sit upright and stay calm"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "D011",
+        "category": "infectious",
+        "guard_keywords": [
+            "fever",
+            "high fever",
+            "temperature",
+            "feverish",
+            "viral fever"
+        ],
+        "primary_symptoms": [
+            "high_fever",
+            "body_pain"
+        ],
+        "secondary_symptoms": [
+            "weakness",
+            "fatigue",
+            "headache"
+        ],
+        "possible_disease": "Viral Fever",
+        "doctor_type": "General Physician",
+        "severity_hint": "low",
+        "warning_signs": [
+            "fever more than 3 days",
+            "very high fever",
+            "severe weakness"
+        ],
+        "self_care": [
+            "drink plenty of fluids",
+            "take adequate rest",
+            "monitor body temperature"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "D012",
+        "category": "infectious",
+        "guard_keywords": [
+            "dengue",
+            "platelet",
+            "mosquito fever",
+            "bone breaking fever"
+        ],
+        "primary_symptoms": [
+            "high_fever",
+            "joint_pain",
+            "severe_body_pain"
+        ],
+        "secondary_symptoms": [
+            "rash",
+            "pain behind eyes",
+            "nausea",
+            "vomiting"
+        ],
+        "possible_disease": "Dengue Fever",
+        "doctor_type": "General Physician",
+        "severity_hint": "high",
+        "warning_signs": [
+            "bleeding gums",
+            "vomiting blood",
+            "severe abdominal pain",
+            "drop in platelet count"
+        ],
+        "self_care": [
+            "avoid painkillers like ibuprofen",
+            "drink oral rehydration fluids",
+            "monitor platelet count"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "D013",
+        "category": "urological",
+        "guard_keywords": [
+            "urine",
+            "burning urine",
+            "pain while urinating",
+            "frequent urination",
+            "uti",
+            "urinary infection"
+        ],
+        "primary_symptoms": [
+            "burning_urination",
+            "frequent_urination"
+        ],
+        "secondary_symptoms": [
+            "lower_stomach_pain",
+            "cloudy urine",
+            "foul smelling urine"
+        ],
+        "possible_disease": "Urinary Tract Infection",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "fever with chills",
+            "back pain",
+            "blood in urine"
+        ],
+        "self_care": [
+            "drink plenty of water",
+            "do not hold urine",
+            "maintain personal hygiene"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "D014",
+        "category": "urological",
+        "guard_keywords": [
+            "kidney stone",
+            "stone",
+            "side pain",
+            "severe back pain",
+            "pain in side",
+            "pain radiating to groin",
+            "blood in urine"
+        ],
+        "primary_symptoms": [
+            "side_pain",
+            "severe_back_pain"
+        ],
+        "secondary_symptoms": [
+            "blood_in_urine",
+            "vomiting",
+            "burning_urination"
+        ],
+        "possible_disease": "Kidney Stones",
+        "doctor_type": "Urologist",
+        "severity_hint": "high",
+        "warning_signs": [
+            "unbearable pain",
+            "fever with chills",
+            "difficulty passing urine"
+        ],
+        "self_care": [
+            "drink plenty of water",
+            "avoid dehydration",
+            "seek medical help if pain increases"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "D015",
+        "category": "orthopedic",
+        "guard_keywords": [
+            "knee pain",
+            "knee joint pain",
+            "knee swelling",
+            "pain while walking",
+            "stiff knee"
+        ],
+        "primary_symptoms": [
+            "knee_pain",
+            "joint_stiffness"
+        ],
+        "secondary_symptoms": [
+            "swelling",
+            "difficulty walking",
+            "reduced movement"
+        ],
+        "possible_disease": "Knee Arthritis",
+        "doctor_type": "Orthopedist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "severe swelling",
+            "inability to bear weight",
+            "sudden worsening pain"
+        ],
+        "self_care": [
+            "avoid excessive strain",
+            "apply warm compress",
+            "maintain healthy weight"
+        ],
+        "age_group": [
+            "adult",
+            "elderly"
+        ]
+    },
+    {
+        "id": "D016",
+        "category": "psychiatric",
+        "guard_keywords": [
+            "panic",
+            "panic attack",
+            "sudden fear",
+            "anxiety attack",
+            "heart racing",
+            "breathlessness with fear"
+        ],
+        "primary_symptoms": [
+            "panic",
+            "fast_heartbeat"
+        ],
+        "secondary_symptoms": [
+            "fear",
+            "sweating",
+            "trembling",
+            "shortness_of_breath"
+        ],
+        "possible_disease": "Panic Attack",
+        "doctor_type": "Psychiatrist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "chest pain",
+            "fainting",
+            "first episode of severe symptoms"
+        ],
+        "self_care": [
+            "slow deep breathing",
+            "sit in a calm place",
+            "reassure yourself symptoms will pass"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "D017",
+        "category": "psychiatric",
+        "guard_keywords": [
+            "sad",
+            "feeling low",
+            "depressed",
+            "hopeless",
+            "loss of interest",
+            "no motivation"
+        ],
+        "primary_symptoms": [
+            "sadness",
+            "loss_of_interest"
+        ],
+        "secondary_symptoms": [
+            "sleep_problem",
+            "fatigue",
+            "poor_concentration"
+        ],
+        "possible_disease": "Depression",
+        "doctor_type": "Psychiatrist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "thoughts of self harm",
+            "persistent sadness over weeks",
+            "social withdrawal"
+        ],
+        "self_care": [
+            "talk to a trusted person",
+            "maintain daily routine",
+            "seek professional help"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "D018",
+        "category": "respiratory",
+        "guard_keywords": [
+            "flu",
+            "influenza",
+            "high fever with cough",
+            "body ache with fever",
+            "seasonal flu"
+        ],
+        "primary_symptoms": [
+            "fever",
+            "cough",
+            "body_pain"
+        ],
+        "secondary_symptoms": [
+            "fatigue",
+            "chills",
+            "headache"
+        ],
+        "possible_disease": "Influenza (Flu)",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "difficulty breathing",
+            "chest pain",
+            "fever lasting more than 3 days"
+        ],
+        "self_care": [
+            "rest adequately",
+            "drink warm fluids",
+            "avoid crowded places"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "D019",
+        "category": "infectious",
+        "guard_keywords": [
+            "covid",
+            "covid 19",
+            "corona",
+            "coronavirus",
+            "loss of smell",
+            "loss of taste",
+            "dry cough with fever"
+        ],
+        "primary_symptoms": [
+            "fever",
+            "dry_cough"
+        ],
+        "secondary_symptoms": [
+            "loss_of_smell",
+            "loss_of_taste",
+            "fatigue",
+            "body_pain"
+        ],
+        "possible_disease": "COVID-19",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "difficulty breathing",
+            "oxygen saturation below normal",
+            "persistent chest pain",
+            "confusion"
+        ],
+        "self_care": [
+            "isolate from others",
+            "monitor oxygen levels if possible",
+            "drink fluids and take adequate rest"
+        ],
+        "age_group": [
+            "child",
+            "adult",
+            "elderly"
+        ]
+    },
+    {
+        "id": "D020",
+        "category": "ent",
+        "guard_keywords": [
+            "sinus",
+            "sinus pain",
+            "blocked nose",
+            "facial pressure",
+            "pain around eyes",
+            "nose congestion"
+        ],
+        "primary_symptoms": [
+            "facial_pain",
+            "blocked_nose"
+        ],
+        "secondary_symptoms": [
+            "headache",
+            "thick nasal discharge",
+            "post nasal drip"
+        ],
+        "possible_disease": "Sinusitis",
+        "doctor_type": "ENT",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "severe facial swelling",
+            "high fever",
+            "vision problems"
+        ],
+        "self_care": [
+            "steam inhalation",
+            "drink warm fluids",
+            "avoid cold exposure"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "D021",
+        "category": "dermatological",
+        "guard_keywords": [
+            "pimple",
+            "acne",
+            "face pimples",
+            "pus pimples",
+            "skin breakout"
+        ],
+        "primary_symptoms": [
+            "pimples"
+        ],
+        "secondary_symptoms": [
+            "redness",
+            "oily_skin",
+            "painful bumps"
+        ],
+        "possible_disease": "Acne",
+        "doctor_type": "Dermatologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "severe painful acne",
+            "scarring",
+            "sudden adult onset acne"
+        ],
+        "self_care": [
+            "keep skin clean",
+            "avoid squeezing pimples",
+            "use non-oily products"
+        ],
+        "age_group": [
+            "teen",
+            "adult"
+        ]
+    },
+    {
+        "id": "D022",
+        "category": "dermatological",
+        "guard_keywords": [
+            "itch",
+            "itching",
+            "skin rash",
+            "red spots",
+            "allergy",
+            "skin allergy"
+        ],
+        "primary_symptoms": [
+            "itching",
+            "rash"
+        ],
+        "secondary_symptoms": [
+            "red_spots",
+            "burning_sensation",
+            "swelling"
+        ],
+        "possible_disease": "Skin Allergy",
+        "doctor_type": "Dermatologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "swelling of lips or face",
+            "difficulty breathing",
+            "rapid spread of rash"
+        ],
+        "self_care": [
+            "avoid known allergens",
+            "do not scratch affected area",
+            "apply soothing lotion"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "D023",
+        "category": "neurological",
+        "guard_keywords": [
+            "fit",
+            "seizure",
+            "convulsion",
+            "fits",
+            "loss of consciousness",
+            "jerking movements"
+        ],
+        "primary_symptoms": [
+            "seizure"
+        ],
+        "secondary_symptoms": [
+            "loss_of_consciousness",
+            "confusion_after_seizure",
+            "tongue_bite"
+        ],
+        "possible_disease": "Epilepsy",
+        "doctor_type": "Neurologist",
+        "severity_hint": "high",
+        "warning_signs": [
+            "seizure lasting more than 5 minutes",
+            "multiple seizures in short time",
+            "injury during seizure"
+        ],
+        "self_care": [
+            "do not restrain during seizure",
+            "turn patient to side",
+            "seek medical help after episode"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "D024",
+        "category": "endocrine",
+        "guard_keywords": [
+            "sugar",
+            "diabetes",
+            "high sugar",
+            "blood sugar",
+            "frequent urination",
+            "excessive thirst"
+        ],
+        "primary_symptoms": [
+            "frequent_urination",
+            "thirst"
+        ],
+        "secondary_symptoms": [
+            "weight_loss",
+            "fatigue",
+            "blurred_vision"
+        ],
+        "possible_disease": "Diabetes",
+        "doctor_type": "Endocrinologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "very high blood sugar",
+            "dizziness or fainting",
+            "non healing wounds"
+        ],
+        "self_care": [
+            "monitor blood sugar",
+            "follow healthy diet",
+            "exercise regularly"
+        ],
+        "age_group": [
+            "adult",
+            "elderly"
+        ]
+    },
+    {
+        "id": "D025",
+        "category": "orthopedic",
+        "guard_keywords": [
+            "back pain",
+            "lower back pain",
+            "back ache",
+            "spine pain",
+            "pain while bending"
+        ],
+        "primary_symptoms": [
+            "lower_back_pain"
+        ],
+        "secondary_symptoms": [
+            "stiffness",
+            "muscle_spasm",
+            "difficulty_bending"
+        ],
+        "possible_disease": "Back Pain",
+        "doctor_type": "Orthopedist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "pain radiating to legs",
+            "numbness or weakness",
+            "loss of bladder control"
+        ],
+        "self_care": [
+            "avoid heavy lifting",
+            "apply warm compress",
+            "maintain proper posture"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "H001",
+        "category": "neurological",
+        "guard_keywords": [
+            "headache",
+            "stress headache",
+            "tired",
+            "pressure head",
+            "tight band headache"
+        ],
+        "primary_symptoms": [
+            "dull_headache_both_sides"
+        ],
+        "secondary_symptoms": [
+            "stress",
+            "neck_stiffness",
+            "fatigue"
+        ],
+        "possible_disease": "Tension Headache",
+        "doctor_type": "General Physician",
+        "severity_hint": "low",
+        "warning_signs": [
+            "headache worsening suddenly",
+            "headache with vomiting",
+            "neurological symptoms"
+        ],
+        "self_care": [
+            "adequate rest",
+            "stress management",
+            "neck stretching exercises"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "H002",
+        "category": "neurological",
+        "guard_keywords": [
+            "migraine",
+            "one side headache",
+            "throbbing headache",
+            "severe headache with nausea",
+            "light sensitivity headache"
+        ],
+        "primary_symptoms": [
+            "throbbing_headache_one_side"
+        ],
+        "secondary_symptoms": [
+            "nausea",
+            "vomiting",
+            "sensitivity_to_light"
+        ],
+        "possible_disease": "Migraine",
+        "doctor_type": "Neurologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "sudden severe headache",
+            "headache with confusion",
+            "headache after injury"
+        ],
+        "self_care": [
+            "rest in dark quiet room",
+            "avoid trigger foods",
+            "maintain sleep routine"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "H003",
+        "category": "ent",
+        "guard_keywords": [
+            "sinus headache",
+            "sinus",
+            "blocked nose",
+            "facial pressure",
+            "pain around eyes",
+            "forehead pain"
+        ],
+        "primary_symptoms": [
+            "facial_pressure",
+            "blocked_nose"
+        ],
+        "secondary_symptoms": [
+            "thick_discharge",
+            "pain_around_eyes",
+            "headache"
+        ],
+        "possible_disease": "Sinus Headache",
+        "doctor_type": "ENT Specialist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "high fever",
+            "severe facial swelling",
+            "vision problems"
+        ],
+        "self_care": [
+            "steam inhalation",
+            "drink warm fluids",
+            "avoid cold air exposure"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "H004",
+        "category": "emergency",
+        "guard_keywords": [
+            "worst headache",
+            "sudden severe headache",
+            "thunderclap headache",
+            "headache with confusion",
+            "headache with vision loss"
+        ],
+        "primary_symptoms": [
+            "sudden_severe_headache"
+        ],
+        "secondary_symptoms": [
+            "confusion",
+            "blurred_vision",
+            "vomiting",
+            "loss_of_consciousness"
+        ],
+        "possible_disease": "Possible Brain Hemorrhage",
+        "doctor_type": "Emergency Medicine",
+        "severity_hint": "critical",
+        "warning_signs": [
+            "loss of consciousness",
+            "weakness on one side",
+            "slurred speech"
+        ],
+        "self_care": [
+            "do not delay medical help",
+            "keep patient still",
+            "call emergency services immediately"
+        ],
+        "age_group": [
+            "adult",
+            "elderly"
+        ]
+    },
+    {
+        "id": "G001",
+        "category": "gastrointestinal",
+        "guard_keywords": [
+            "gas",
+            "acidity",
+            "indigestion",
+            "bloating",
+            "stomach gas",
+            "burning stomach"
+        ],
+        "primary_symptoms": [
+            "gas",
+            "bloating",
+            "abdominal_discomfort"
+        ],
+        "secondary_symptoms": [
+            "burping",
+            "acid_reflux",
+            "fullness",
+            "burning_sensation"
+        ],
+        "possible_disease": "Gastric Acidity / Gas",
+        "doctor_type": "General Physician",
+        "severity_hint": "low",
+        "warning_signs": [
+            "severe chest pain",
+            "persistent vomiting",
+            "black stools"
+        ],
+        "self_care": [
+            "avoid spicy and oily food",
+            "eat smaller meals",
+            "avoid lying down immediately after eating"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "G002",
+        "category": "gastrointestinal",
+        "guard_keywords": [
+            "constipation",
+            "no motion",
+            "hard stool",
+            "difficulty passing stool",
+            "irregular bowel movement"
+        ],
+        "primary_symptoms": [
+            "constipation",
+            "hard_stool"
+        ],
+        "secondary_symptoms": [
+            "bloating",
+            "stomach_pain",
+            "discomfort"
+        ],
+        "possible_disease": "Constipation",
+        "doctor_type": "General Physician",
+        "severity_hint": "low",
+        "warning_signs": [
+            "blood in stool",
+            "severe abdominal pain",
+            "constipation for many days"
+        ],
+        "self_care": [
+            "increase fiber intake",
+            "drink plenty of water",
+            "maintain regular bowel routine"
+        ],
+        "age_group": [
+            "adult",
+            "elderly"
+        ]
+    },
+    {
+        "id": "G003",
+        "category": "gastrointestinal",
+        "guard_keywords": [
+            "diarrhea",
+            "loose motion",
+            "frequent loose stools",
+            "watery stool",
+            "loose"
+        ],
+        "primary_symptoms": [
+            "diarrhea",
+            "loose_motion"
+        ],
+        "secondary_symptoms": [
+            "stomach_pain",
+            "dehydration",
+            "weakness"
+        ],
+        "possible_disease": "Diarrhea",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "severe dehydration",
+            "blood in stool",
+            "fever with diarrhea"
+        ],
+        "self_care": [
+            "drink oral rehydration solution",
+            "avoid street food",
+            "maintain hygiene"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "G004",
+        "category": "gastrointestinal",
+        "guard_keywords": [
+            "ibs",
+            "irritable bowel",
+            "gas problem",
+            "bowel problem",
+            "stomach pain with stress",
+            "alternating diarrhea constipation"
+        ],
+        "primary_symptoms": [
+            "stomach_pain",
+            "gas",
+            "bloating"
+        ],
+        "secondary_symptoms": [
+            "diarrhea",
+            "constipation",
+            "stress",
+            "abdominal_cramps"
+        ],
+        "possible_disease": "Irritable Bowel Syndrome (IBS)",
+        "doctor_type": "Gastroenterologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "blood in stool",
+            "unintentional weight loss",
+            "persistent severe pain"
+        ],
+        "self_care": [
+            "identify and avoid trigger foods",
+            "manage stress",
+            "eat small frequent meals"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "G005",
+        "category": "gastrointestinal",
+        "guard_keywords": [
+            "stomach infection",
+            "food infection",
+            "food poisoning",
+            "vomiting and diarrhea",
+            "infection stomach"
+        ],
+        "primary_symptoms": [
+            "stomach_pain",
+            "vomiting",
+            "diarrhea"
+        ],
+        "secondary_symptoms": [
+            "fever",
+            "weakness",
+            "nausea",
+            "dehydration"
+        ],
+        "possible_disease": "Stomach Infection",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "severe dehydration",
+            "blood in vomit or stool",
+            "high fever"
+        ],
+        "self_care": [
+            "oral rehydration solution",
+            "avoid outside food",
+            "rest adequately"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "G006",
+        "category": "gastrointestinal",
+        "guard_keywords": [
+            "indigestion",
+            "heavy stomach",
+            "fullness",
+            "uneasy stomach",
+            "stomach heaviness"
+        ],
+        "primary_symptoms": [
+            "indigestion",
+            "heaviness"
+        ],
+        "secondary_symptoms": [
+            "bloating",
+            "gas",
+            "nausea",
+            "burning_sensation"
+        ],
+        "possible_disease": "Indigestion",
+        "doctor_type": "General Physician",
+        "severity_hint": "low",
+        "warning_signs": [
+            "persistent vomiting",
+            "weight loss",
+            "severe upper abdominal pain"
+        ],
+        "self_care": [
+            "avoid overeating",
+            "limit spicy and oily food",
+            "eat slowly"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "G007",
+        "category": "gastrointestinal",
+        "guard_keywords": [
+            "worms",
+            "worm infection",
+            "itching anus",
+            "anal itching",
+            "worms in stool"
+        ],
+        "primary_symptoms": [
+            "abdominal_pain",
+            "itching_anus"
+        ],
+        "secondary_symptoms": [
+            "weight_loss",
+            "anemia",
+            "weakness",
+            "poor_appetite"
+        ],
+        "possible_disease": "Intestinal Worm Infection",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "severe anemia",
+            "growth issues in children",
+            "persistent abdominal pain"
+        ],
+        "self_care": [
+            "maintain hand hygiene",
+            "wash vegetables properly",
+            "deworming as advised by doctor"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "R001",
+        "category": "respiratory",
+        "guard_keywords": [
+            "cough",
+            "cold",
+            "runny nose",
+            "sneezing",
+            "blocked nose"
+        ],
+        "primary_symptoms": [
+            "cough",
+            "cold",
+            "runny_nose"
+        ],
+        "secondary_symptoms": [
+            "sore_throat",
+            "mild_fever",
+            "sneezing",
+            "fatigue"
+        ],
+        "possible_disease": "Common Cold",
+        "doctor_type": "General Physician",
+        "severity_hint": "low",
+        "warning_signs": [
+            "fever lasting more than 3 days",
+            "difficulty breathing",
+            "ear pain"
+        ],
+        "self_care": [
+            "warm fluids",
+            "adequate rest",
+            "steam inhalation"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "R002",
+        "category": "respiratory",
+        "guard_keywords": [
+            "flu",
+            "influenza",
+            "fever with body pain",
+            "seasonal flu",
+            "high fever with cough"
+        ],
+        "primary_symptoms": [
+            "fever",
+            "cough",
+            "body_pain"
+        ],
+        "secondary_symptoms": [
+            "chills",
+            "fatigue",
+            "headache",
+            "sore_throat"
+        ],
+        "possible_disease": "Influenza (Flu)",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "difficulty breathing",
+            "chest pain",
+            "fever more than 3 days"
+        ],
+        "self_care": [
+            "adequate rest",
+            "drink plenty of fluids",
+            "avoid crowded places"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "R003",
+        "category": "respiratory",
+        "guard_keywords": [
+            "asthma",
+            "breathlessness",
+            "shortness of breath",
+            "wheezing",
+            "chest tightness",
+            "night cough"
+        ],
+        "primary_symptoms": [
+            "breathlessness",
+            "wheezing"
+        ],
+        "secondary_symptoms": [
+            "chest_tightness",
+            "night_cough",
+            "fast_breathing"
+        ],
+        "possible_disease": "Asthma",
+        "doctor_type": "Pulmonologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "severe breathlessness",
+            "difficulty speaking full sentences",
+            "bluish lips or nails"
+        ],
+        "self_care": [
+            "avoid dust and smoke",
+            "use prescribed inhaler",
+            "sit upright and stay calm"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "R004",
+        "category": "respiratory",
+        "guard_keywords": [
+            "long cough",
+            "persistent cough",
+            "phlegm",
+            "chest congestion",
+            "cough with mucus"
+        ],
+        "primary_symptoms": [
+            "persistent_cough",
+            "phlegm"
+        ],
+        "secondary_symptoms": [
+            "chest_discomfort",
+            "fatigue",
+            "mild_fever"
+        ],
+        "possible_disease": "Bronchitis",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "breathlessness",
+            "high fever",
+            "cough lasting more than 3 weeks"
+        ],
+        "self_care": [
+            "drink warm fluids",
+            "avoid smoking",
+            "take adequate rest"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "R005",
+        "category": "respiratory",
+        "guard_keywords": [
+            "pneumonia",
+            "high fever with cough",
+            "chest pain",
+            "phlegm",
+            "difficulty breathing"
+        ],
+        "primary_symptoms": [
+            "high_fever",
+            "chest_pain",
+            "phlegm"
+        ],
+        "secondary_symptoms": [
+            "shortness_of_breath",
+            "chills",
+            "fatigue"
+        ],
+        "possible_disease": "Pneumonia",
+        "doctor_type": "Pulmonologist",
+        "severity_hint": "high",
+        "warning_signs": [
+            "severe breathlessness",
+            "bluish lips",
+            "confusion"
+        ],
+        "self_care": [
+            "seek medical care promptly",
+            "take prescribed medicines",
+            "adequate rest and fluids"
+        ],
+        "age_group": [
+            "child",
+            "adult",
+            "elderly"
+        ]
+    },
+    {
+        "id": "R006",
+        "category": "respiratory",
+        "guard_keywords": [
+            "tb",
+            "tuberculosis",
+            "blood cough",
+            "cough more than 2 weeks",
+            "night sweats",
+            "weight loss"
+        ],
+        "primary_symptoms": [
+            "persistent_cough",
+            "blood_in_sputum"
+        ],
+        "secondary_symptoms": [
+            "weight_loss",
+            "night_sweats",
+            "fever",
+            "fatigue"
+        ],
+        "possible_disease": "Tuberculosis",
+        "doctor_type": "Pulmonologist",
+        "severity_hint": "high",
+        "warning_signs": [
+            "cough lasting more than 2 weeks",
+            "blood in sputum",
+            "severe weakness"
+        ],
+        "self_care": [
+            "seek medical evaluation immediately",
+            "do not stop treatment midway",
+            "avoid close contact until advised"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "R007",
+        "category": "respiratory",
+        "guard_keywords": [
+            "covid",
+            "corona",
+            "loss of smell",
+            "dry cough",
+            "covid fever"
+        ],
+        "primary_symptoms": [
+            "fever",
+            "dry_cough"
+        ],
+        "secondary_symptoms": [
+            "loss_of_smell",
+            "fatigue",
+            "body_pain"
+        ],
+        "possible_disease": "COVID-19",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "difficulty breathing",
+            "oxygen level dropping",
+            "persistent chest pain"
+        ],
+        "self_care": [
+            "isolate from others",
+            "monitor symptoms",
+            "stay hydrated and rest"
+        ],
+        "age_group": [
+            "child",
+            "adult",
+            "elderly"
+        ]
+    },
+    {
+        "id": "R008",
+        "category": "respiratory",
+        "guard_keywords": [
+            "sore throat",
+            "throat pain",
+            "pain while swallowing",
+            "throat infection"
+        ],
+        "primary_symptoms": [
+            "sore_throat",
+            "throat_pain"
+        ],
+        "secondary_symptoms": [
+            "difficulty_swallowing",
+            "mild_fever",
+            "hoarseness"
+        ],
+        "possible_disease": "Pharyngitis",
+        "doctor_type": "ENT Specialist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "high fever",
+            "difficulty breathing",
+            "swelling in neck"
+        ],
+        "self_care": [
+            "warm salt water gargles",
+            "drink warm fluids",
+            "voice rest"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "R009",
+        "category": "respiratory",
+        "guard_keywords": [
+            "snoring",
+            "loud snoring",
+            "sleep apnea",
+            "breath stop during sleep",
+            "breathing stops at night",
+            "daytime sleepiness"
+        ],
+        "primary_symptoms": [
+            "loud_snoring",
+            "daytime_sleepiness"
+        ],
+        "secondary_symptoms": [
+            "breathing_pauses_during_sleep",
+            "morning_headache",
+            "poor_concentration"
+        ],
+        "possible_disease": "Sleep Apnea",
+        "doctor_type": "Pulmonologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "breathing pauses witnessed frequently",
+            "excessive daytime sleepiness",
+            "high blood pressure with snoring"
+        ],
+        "self_care": [
+            "sleep on side",
+            "avoid alcohol before sleep",
+            "maintain healthy body weight"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "R010",
+        "category": "respiratory",
+        "guard_keywords": [
+            "smoker",
+            "chronic cough",
+            "long term cough",
+            "breathlessness on exertion",
+            "wheezing in smoker"
+        ],
+        "primary_symptoms": [
+            "chronic_cough",
+            "breathlessness"
+        ],
+        "secondary_symptoms": [
+            "wheezing",
+            "fatigue",
+            "chest_tightness"
+        ],
+        "possible_disease": "COPD",
+        "doctor_type": "Pulmonologist",
+        "severity_hint": "high",
+        "warning_signs": [
+            "severe breathlessness",
+            "frequent chest infections",
+            "blue lips or nails"
+        ],
+        "self_care": [
+            "stop smoking immediately",
+            "avoid air pollution",
+            "follow prescribed inhaler therapy"
+        ],
+        "age_group": [
+            "adult",
+            "elderly"
+        ]
+    },
+    {
+        "id": "S001",
+        "category": "dermatological",
+        "guard_keywords": [
+            "itch",
+            "itching",
+            "skin rash",
+            "red patches",
+            "allergic rash"
+        ],
+        "primary_symptoms": [
+            "itching",
+            "skin_rash",
+            "redness"
+        ],
+        "secondary_symptoms": [
+            "burning_sensation",
+            "dry_skin",
+            "mild_swelling"
+        ],
+        "possible_disease": "Skin Allergy",
+        "doctor_type": "Dermatologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "swelling of face or lips",
+            "difficulty breathing",
+            "rapidly spreading rash"
+        ],
+        "self_care": [
+            "avoid known allergens",
+            "do not scratch affected area",
+            "use soothing moisturizer"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "S002",
+        "category": "dermatological",
+        "guard_keywords": [
+            "pimple",
+            "acne",
+            "face pimples",
+            "pus pimples",
+            "skin breakout"
+        ],
+        "primary_symptoms": [
+            "pimples",
+            "pus_filled_pimples"
+        ],
+        "secondary_symptoms": [
+            "oily_skin",
+            "redness",
+            "painful_bumps"
+        ],
+        "possible_disease": "Acne",
+        "doctor_type": "Dermatologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "severe cystic acne",
+            "scarring",
+            "sudden adult onset acne"
+        ],
+        "self_care": [
+            "wash face gently",
+            "avoid squeezing pimples",
+            "use non-oily skincare products"
+        ],
+        "age_group": [
+            "teen",
+            "adult"
+        ]
+    },
+    {
+        "id": "S003",
+        "category": "fungal",
+        "guard_keywords": [
+            "ringworm",
+            "fungal infection",
+            "itchy circle rash",
+            "circular rash",
+            "white ring rash"
+        ],
+        "primary_symptoms": [
+            "circular_rash",
+            "itching"
+        ],
+        "secondary_symptoms": [
+            "scaly_skin",
+            "red_edges",
+            "spreading_rash"
+        ],
+        "possible_disease": "Ringworm (Tinea)",
+        "doctor_type": "Dermatologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "spreading despite treatment",
+            "secondary infection",
+            "multiple body areas involved"
+        ],
+        "self_care": [
+            "keep area dry",
+            "avoid sharing towels",
+            "use antifungal cream as advised"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "S004",
+        "category": "fungal",
+        "guard_keywords": [
+            "athlete foot",
+            "foot fungus",
+            "toe itch",
+            "itching between toes",
+            "peeling foot skin"
+        ],
+        "primary_symptoms": [
+            "itching_between_toes",
+            "peeling_skin"
+        ],
+        "secondary_symptoms": [
+            "burning_sensation",
+            "cracked_skin",
+            "bad_odor"
+        ],
+        "possible_disease": "Athlete’s Foot",
+        "doctor_type": "Dermatologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "spreading infection",
+            "painful cracks",
+            "secondary bacterial infection"
+        ],
+        "self_care": [
+            "keep feet dry",
+            "change socks daily",
+            "use antifungal cream"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "S004",
+        "category": "fungal",
+        "guard_keywords": [
+            "athlete foot",
+            "foot fungus",
+            "toe itch",
+            "itching between toes",
+            "peeling foot skin"
+        ],
+        "primary_symptoms": [
+            "itching_between_toes",
+            "peeling_skin"
+        ],
+        "secondary_symptoms": [
+            "burning_sensation",
+            "cracked_skin",
+            "bad_odor"
+        ],
+        "possible_disease": "Athlete’s Foot",
+        "doctor_type": "Dermatologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "spreading infection",
+            "painful cracks",
+            "secondary bacterial infection"
+        ],
+        "self_care": [
+            "keep feet dry",
+            "change socks daily",
+            "use antifungal cream"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "S006",
+        "category": "fungal",
+        "guard_keywords": [
+            "white patch",
+            "skin discoloration",
+            "fungal white spots",
+            "uneven skin color"
+        ],
+        "primary_symptoms": [
+            "white_patches_on_skin",
+            "mild_itching"
+        ],
+        "secondary_symptoms": [
+            "dry_skin",
+            "scaling"
+        ],
+        "possible_disease": "Pityriasis Versicolor",
+        "doctor_type": "Dermatologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "rapid spread",
+            "recurrence",
+            "cosmetic distress"
+        ],
+        "self_care": [
+            "keep skin dry",
+            "use antifungal shampoo or lotion",
+            "avoid excessive sweating"
+        ],
+        "age_group": [
+            "teen",
+            "adult"
+        ]
+    },
+    {
+        "id": "S007",
+        "category": "dermatological",
+        "guard_keywords": [
+            "psoriasis",
+            "scaly skin",
+            "thick skin patches",
+            "silvery scales"
+        ],
+        "primary_symptoms": [
+            "thick_scaly_patches",
+            "itching"
+        ],
+        "secondary_symptoms": [
+            "dry_cracked_skin",
+            "bleeding_on_scratching"
+        ],
+        "possible_disease": "Psoriasis",
+        "doctor_type": "Dermatologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "joint pain",
+            "extensive skin involvement",
+            "infection of cracks"
+        ],
+        "self_care": [
+            "moisturize regularly",
+            "avoid skin injury",
+            "manage stress"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "S008",
+        "category": "dermatological",
+        "guard_keywords": [
+            "eczema",
+            "dry itchy skin",
+            "skin allergy",
+            "recurrent rash"
+        ],
+        "primary_symptoms": [
+            "dry_itchy_skin",
+            "red_patches"
+        ],
+        "secondary_symptoms": [
+            "skin_cracks",
+            "oozing"
+        ],
+        "possible_disease": "Eczema (Atopic Dermatitis)",
+        "doctor_type": "Dermatologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "infected lesions",
+            "severe itching disturbing sleep",
+            "widespread rash"
+        ],
+        "self_care": [
+            "use gentle moisturizers",
+            "avoid harsh soaps",
+            "keep skin hydrated"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "S009",
+        "category": "dermatological",
+        "guard_keywords": [
+            "boil",
+            "skin infection",
+            "painful lump",
+            "pus filled swelling"
+        ],
+        "primary_symptoms": [
+            "painful_skin_lump",
+            "pus"
+        ],
+        "secondary_symptoms": [
+            "redness",
+            "swelling",
+            "local_warmth"
+        ],
+        "possible_disease": "Boil (Skin Abscess)",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "fever",
+            "rapid spread",
+            "boil on face"
+        ],
+        "self_care": [
+            "keep area clean",
+            "do not squeeze",
+            "warm compress"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "S010",
+        "category": "dermatological",
+        "guard_keywords": [
+            "hives",
+            "urticaria",
+            "itchy swelling",
+            "sudden rash"
+        ],
+        "primary_symptoms": [
+            "raised_itchy_welts",
+            "skin_swelling"
+        ],
+        "secondary_symptoms": [
+            "redness",
+            "burning_sensation"
+        ],
+        "possible_disease": "Hives (Urticaria)",
+        "doctor_type": "Dermatologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "swelling of lips or face",
+            "difficulty breathing",
+            "dizziness"
+        ],
+        "self_care": [
+            "avoid trigger foods",
+            "apply cool compress",
+            "avoid scratching"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "W001",
+        "category": "gynecological",
+        "guard_keywords": [
+            "period pain",
+            "menstrual cramps",
+            "painful periods",
+            "lower abdominal pain during periods"
+        ],
+        "primary_symptoms": [
+            "lower_abdominal_cramps",
+            "pelvic_pain"
+        ],
+        "secondary_symptoms": [
+            "back_pain",
+            "nausea",
+            "fatigue",
+            "headache"
+        ],
+        "possible_disease": "Dysmenorrhea (Period Cramps)",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "very severe pain",
+            "irregular bleeding",
+            "pain not relieved by medicines"
+        ],
+        "self_care": [
+            "warm compress on abdomen",
+            "light exercise",
+            "adequate rest"
+        ],
+        "age_group": [
+            "teen",
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+
+    {
+        "id": "W002",
+        "category": "gynecological",
+        "guard_keywords": [
+            "pcos",
+            "irregular periods",
+            "missed periods",
+            "period not regular",
+            "hormonal problem",
+            "facial hair",
+            "weight gain with irregular periods"
+        ],
+        "primary_symptoms": [
+            "irregular_periods",
+            "missed_periods"
+        ],
+        "secondary_symptoms": [
+            "acne",
+            "weight_gain",
+            "excess_hair_growth",
+            "hair_fall"
+        ],
+        "possible_disease": "PCOS (Polycystic Ovary Syndrome)",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "periods absent for several months",
+            "rapid weight gain",
+            "difficulty conceiving"
+        ],
+        "self_care": [
+            "maintain healthy weight",
+            "regular physical activity",
+            "balanced low-sugar diet"
+        ],
+        "age_group": [
+            "teen",
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "W003",
+        "category": "gynecological",
+        "guard_keywords": [
+            "heavy bleeding",
+            "long periods",
+            "excessive periods",
+            "bleeding more than 7 days",
+            "periods very heavy"
+        ],
+        "primary_symptoms": [
+            "heavy_menstrual_bleeding",
+            "periods_more_than_7_days"
+        ],
+        "secondary_symptoms": [
+            "fatigue",
+            "weakness",
+            "dizziness",
+            "shortness_of_breath"
+        ],
+        "possible_disease": "Menorrhagia (Heavy Periods)",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "soaking pads every hour",
+            "severe weakness",
+            "symptoms of anemia"
+        ],
+        "self_care": [
+            "adequate rest",
+            "iron-rich diet",
+            "track menstrual cycle"
+        ],
+        "age_group": [
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "W004",
+        "category": "gynecological",
+        "guard_keywords": [
+            "missed period",
+            "pregnant",
+            "pregnancy symptoms",
+            "positive pregnancy test",
+            "morning sickness"
+        ],
+        "primary_symptoms": [
+            "missed_period",
+            "morning_sickness"
+        ],
+        "secondary_symptoms": [
+            "breast_tenderness",
+            "fatigue",
+            "frequent_urination"
+        ],
+        "possible_disease": "Early Pregnancy",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "severe abdominal pain",
+            "bleeding during pregnancy",
+            "dizziness or fainting"
+        ],
+        "self_care": [
+            "confirm pregnancy with test",
+            "avoid alcohol and smoking",
+            "start prenatal vitamins if advised"
+        ],
+        "age_group": [
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "W005",
+        "category": "gynecological",
+        "guard_keywords": [
+            "vaginal itching",
+            "white discharge",
+            "cottage cheese discharge",
+            "itching private part",
+            "vaginal fungal infection"
+        ],
+        "primary_symptoms": [
+            "vaginal_itching",
+            "white_discharge"
+        ],
+        "secondary_symptoms": [
+            "burning_sensation",
+            "redness",
+            "pain_during_urination"
+        ],
+        "possible_disease": "Vaginal Yeast Infection",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "recurrent infections",
+            "severe pain",
+            "no improvement with treatment"
+        ],
+        "self_care": [
+            "maintain intimate hygiene",
+            "avoid tight synthetic clothing",
+            "avoid self-medication"
+        ],
+        "age_group": [
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "W006",
+        "category": "gynecological",
+        "guard_keywords": [
+            "foul smell discharge",
+            "yellow discharge",
+            "green discharge",
+            "fishy smell",
+            "vaginal odor"
+        ],
+        "primary_symptoms": [
+            "yellow_green_discharge",
+            "bad_odor"
+        ],
+        "secondary_symptoms": [
+            "pelvic_discomfort",
+            "itching",
+            "burning_sensation"
+        ],
+        "possible_disease": "Bacterial Vaginosis",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "pelvic pain",
+            "fever",
+            "symptoms during pregnancy"
+        ],
+        "self_care": [
+            "avoid vaginal douching",
+            "maintain hygiene",
+            "seek medical treatment"
+        ],
+        "age_group": [
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "W007",
+        "category": "gynecological",
+        "guard_keywords": [
+            "endometriosis",
+            "pelvic pain",
+            "chronic pelvic pain",
+            "pain during sex",
+            "severe period pain",
+            "pain before periods"
+        ],
+        "primary_symptoms": [
+            "chronic_pelvic_pain",
+            "pain_during_intercourse"
+        ],
+        "secondary_symptoms": [
+            "painful_periods",
+            "fatigue",
+            "lower_back_pain",
+            "pain_during_bowel_movement"
+        ],
+        "possible_disease": "Endometriosis",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "severe pain affecting daily life",
+            "pain not relieved by painkillers",
+            "difficulty conceiving"
+        ],
+        "self_care": [
+            "use warm compress for pain relief",
+            "track menstrual cycle and pain patterns",
+            "light exercise if tolerable"
+        ],
+        "age_group": [
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "W008",
+        "category": "gynecological",
+        "guard_keywords": [
+            "breast pain",
+            "breast lump",
+            "breast tenderness",
+            "cyclic breast pain"
+        ],
+        "primary_symptoms": [
+            "breast_pain",
+            "breast_tenderness"
+        ],
+        "secondary_symptoms": [
+            "lump_feel",
+            "swelling"
+        ],
+        "possible_disease": "Fibrocystic Breast Changes",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "hard fixed lump",
+            "lump increasing in size",
+            "nipple discharge",
+            "skin changes over breast"
+        ],
+        "self_care": [
+            "wear supportive bra",
+            "reduce caffeine intake",
+            "use warm compress"
+        ],
+        "age_group": [
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "W009",
+        "category": "gynecological",
+        "guard_keywords": [
+            "pregnancy vomiting",
+            "severe nausea",
+            "excessive vomiting pregnancy",
+            "cannot keep food"
+        ],
+        "primary_symptoms": [
+            "severe_vomiting_pregnancy",
+            "weight_loss"
+        ],
+        "secondary_symptoms": [
+            "dehydration",
+            "fatigue"
+        ],
+        "possible_disease": "Hyperemesis Gravidarum",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "high",
+        "warning_signs": [
+            "unable to drink fluids",
+            "severe dehydration",
+            "dizziness or fainting"
+        ],
+        "self_care": [
+            "small frequent meals",
+            "oral rehydration",
+            "avoid strong smells"
+        ],
+        "age_group": [
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "W010",
+        "category": "gynecological",
+        "guard_keywords": [
+            "menopause",
+            "hot flashes",
+            "no periods",
+            "irregular periods age 45"
+        ],
+        "primary_symptoms": [
+            "hot_flashes",
+            "irregular_periods"
+        ],
+        "secondary_symptoms": [
+            "mood_swings",
+            "night_sweats",
+            "sleep_disturbance"
+        ],
+        "possible_disease": "Menopause",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "heavy bleeding after menopause",
+            "bleeding after long gap",
+            "severe depression"
+        ],
+        "self_care": [
+            "regular exercise",
+            "healthy diet",
+            "stress management"
+        ],
+        "age_group": [
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "W003",
+        "category": "gynecological",
+        "guard_keywords": [
+            "heavy bleeding",
+            "long periods",
+            "excessive bleeding",
+            "periods more than 7 days",
+            "soaking pads"
+        ],
+        "primary_symptoms": [
+            "heavy_menstrual_bleeding",
+            "periods_more_than_7_days"
+        ],
+        "secondary_symptoms": [
+            "fatigue",
+            "weakness",
+            "dizziness"
+        ],
+        "possible_disease": "Menorrhagia (Heavy Periods)",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "passing large blood clots",
+            "severe weakness or fainting",
+            "bleeding between periods"
+        ],
+        "self_care": [
+            "maintain iron-rich diet",
+            "track bleeding pattern",
+            "avoid heavy exertion during periods"
+        ],
+        "age_group": [
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "W004",
+        "category": "gynecological",
+        "guard_keywords": [
+            "missed period",
+            "pregnant",
+            "positive pregnancy test",
+            "late periods"
+        ],
+        "primary_symptoms": [
+            "missed_period",
+            "morning_sickness"
+        ],
+        "secondary_symptoms": [
+            "breast_tenderness",
+            "fatigue"
+        ],
+        "possible_disease": "Early Pregnancy",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "severe abdominal pain",
+            "bleeding during pregnancy",
+            "dizziness or fainting"
+        ],
+        "self_care": [
+            "start prenatal vitamins",
+            "adequate rest",
+            "avoid alcohol and smoking"
+        ],
+        "age_group": [
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "W005",
+        "category": "gynecological",
+        "guard_keywords": [
+            "vaginal itching",
+            "white discharge",
+            "thick discharge",
+            "cottage cheese discharge"
+        ],
+        "primary_symptoms": [
+            "vaginal_itching",
+            "white_discharge"
+        ],
+        "secondary_symptoms": [
+            "burning_sensation",
+            "redness"
+        ],
+        "possible_disease": "Vaginal Yeast Infection",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "severe pain",
+            "recurrent infections",
+            "fever with discharge"
+        ],
+        "self_care": [
+            "keep area dry",
+            "avoid scented products",
+            "wear cotton underwear"
+        ],
+        "age_group": [
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "W006",
+        "category": "gynecological",
+        "guard_keywords": [
+            "foul smell",
+            "yellow discharge",
+            "fishy odor",
+            "gray discharge"
+        ],
+        "primary_symptoms": [
+            "yellow_green_discharge",
+            "bad_odor"
+        ],
+        "secondary_symptoms": [
+            "pelvic_discomfort",
+            "itching"
+        ],
+        "possible_disease": "Bacterial Vaginosis",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "pelvic pain",
+            "fever",
+            "bleeding"
+        ],
+        "self_care": [
+            "avoid douching",
+            "maintain intimate hygiene",
+            "complete prescribed treatment"
+        ],
+        "age_group": [
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "W007",
+        "category": "gynecological",
+        "guard_keywords": [
+            "endometriosis",
+            "pelvic pain",
+            "chronic pelvic pain",
+            "pain during sex",
+            "severe period pain",
+            "pain before periods"
+        ],
+        "primary_symptoms": [
+            "chronic_pelvic_pain",
+            "pain_during_intercourse"
+        ],
+        "secondary_symptoms": [
+            "painful_periods",
+            "fatigue",
+            "lower_back_pain",
+            "pain_during_bowel_movement"
+        ],
+        "possible_disease": "Endometriosis",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "severe pain affecting daily life",
+            "pain not relieved by painkillers",
+            "difficulty conceiving"
+        ],
+        "self_care": [
+            "use warm compress for pain relief",
+            "track menstrual cycle and pain patterns",
+            "light exercise if tolerable"
+        ],
+        "age_group": [
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "W008",
+        "category": "gynecological",
+        "guard_keywords": [
+            "breast pain",
+            "breast lump",
+            "breast tenderness",
+            "cyclic breast pain"
+        ],
+        "primary_symptoms": [
+            "breast_pain",
+            "breast_tenderness"
+        ],
+        "secondary_symptoms": [
+            "lump_feel",
+            "swelling"
+        ],
+        "possible_disease": "Fibrocystic Breast Changes",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "hard fixed lump",
+            "lump increasing in size",
+            "nipple discharge",
+            "skin changes over breast"
+        ],
+        "self_care": [
+            "wear supportive bra",
+            "reduce caffeine intake",
+            "use warm compress"
+        ],
+        "age_group": [
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "W009",
+        "category": "gynecological",
+        "guard_keywords": [
+            "pregnancy vomiting",
+            "severe nausea",
+            "excessive vomiting pregnancy",
+            "cannot keep food"
+        ],
+        "primary_symptoms": [
+            "severe_vomiting_pregnancy",
+            "weight_loss"
+        ],
+        "secondary_symptoms": [
+            "dehydration",
+            "fatigue"
+        ],
+        "possible_disease": "Hyperemesis Gravidarum",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "high",
+        "warning_signs": [
+            "unable to drink fluids",
+            "severe dehydration",
+            "dizziness or fainting"
+        ],
+        "self_care": [
+            "small frequent meals",
+            "oral rehydration",
+            "avoid strong smells"
+        ],
+        "age_group": [
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "W010",
+        "category": "gynecological",
+        "guard_keywords": [
+            "menopause",
+            "hot flashes",
+            "no periods",
+            "irregular periods age 45"
+        ],
+        "primary_symptoms": [
+            "hot_flashes",
+            "irregular_periods"
+        ],
+        "secondary_symptoms": [
+            "mood_swings",
+            "night_sweats",
+            "sleep_disturbance"
+        ],
+        "possible_disease": "Menopause",
+        "doctor_type": "Gynecologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "heavy bleeding after menopause",
+            "bleeding after long gap",
+            "severe depression"
+        ],
+        "self_care": [
+            "regular exercise",
+            "healthy diet",
+            "stress management"
+        ],
+        "age_group": [
+            "adult"
+        ],
+        "gender_specific": "female"
+    },
+    {
+        "id": "C001",
+        "category": "pediatrics",
+        "guard_keywords": [
+            "fever",
+            "child fever",
+            "baby fever",
+            "high temperature child"
+        ],
+        "primary_symptoms": [
+            "fever",
+            "irritability"
+        ],
+        "secondary_symptoms": [
+            "poor_appetite",
+            "crying"
+        ],
+        "possible_disease": "Viral Fever (Child)",
+        "doctor_type": "Pediatrician",
+        "severity_hint": "low",
+        "warning_signs": [
+            "fever more than 3 days",
+            "very high fever",
+            "child very lethargic",
+            "seizures with fever"
+        ],
+        "self_care": [
+            "ensure adequate fluids",
+            "light clothing",
+            "monitor temperature regularly"
+        ],
+        "age_group": [
+            "infant",
+            "child"
+        ]
+    },
+    {
+        "id": "C002",
+        "category": "pediatrics",
+        "guard_keywords": [
+            "cold",
+            "runny nose",
+            "child cold",
+            "blocked nose baby"
+        ],
+        "primary_symptoms": [
+            "runny_nose",
+            "cough"
+        ],
+        "secondary_symptoms": [
+            "sneezing",
+            "mild_fever"
+        ],
+        "possible_disease": "Common Cold (Child)",
+        "doctor_type": "Pediatrician",
+        "severity_hint": "low",
+        "warning_signs": [
+            "difficulty breathing",
+            "high fever",
+            "poor feeding"
+        ],
+        "self_care": [
+            "saline nasal drops",
+            "keep child hydrated",
+            "adequate rest"
+        ],
+        "age_group": [
+            "infant",
+            "child"
+        ]
+    },
+    {
+        "id": "C003",
+        "category": "pediatrics",
+        "guard_keywords": [
+            "cough",
+            "barking cough",
+            "seal like cough",
+            "hoarse voice child"
+        ],
+        "primary_symptoms": [
+            "barking_cough",
+            "hoarseness"
+        ],
+        "secondary_symptoms": [
+            "fever",
+            "runny_nose"
+        ],
+        "possible_disease": "Croup",
+        "doctor_type": "Pediatrician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "breathing difficulty",
+            "bluish lips",
+            "stridor at rest"
+        ],
+        "self_care": [
+            "keep child calm",
+            "cool mist humidifier",
+            "seek medical advice if worsening"
+        ],
+        "age_group": [
+            "infant",
+            "child"
+        ]
+    },
+    {
+        "id": "C004",
+        "category": "pediatrics",
+        "guard_keywords": [
+            "wheezing",
+            "breathless",
+            "child asthma",
+            "whistling sound chest"
+        ],
+        "primary_symptoms": [
+            "wheezing",
+            "shortness_of_breath"
+        ],
+        "secondary_symptoms": [
+            "chest_tightness",
+            "cough"
+        ],
+        "possible_disease": "Childhood Asthma",
+        "doctor_type": "Pediatrician / Pulmonologist",
+        "severity_hint": "high",
+        "warning_signs": [
+            "difficulty speaking",
+            "rapid breathing",
+            "chest retractions"
+        ],
+        "self_care": [
+            "use prescribed inhaler",
+            "avoid known triggers",
+            "keep emergency plan ready"
+        ],
+        "age_group": [
+            "child"
+        ]
+    },
+    {
+        "id": "C005",
+        "category": "pediatrics",
+        "guard_keywords": [
+            "diarrhea",
+            "loose motion",
+            "child vomiting",
+            "watery stools"
+        ],
+        "primary_symptoms": [
+            "watery_diarrhea",
+            "vomiting"
+        ],
+        "secondary_symptoms": [
+            "dehydration",
+            "fever"
+        ],
+        "possible_disease": "Acute Gastroenteritis",
+        "doctor_type": "Pediatrician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "no urine for many hours",
+            "sunken eyes",
+            "blood in stools"
+        ],
+        "self_care": [
+            "oral rehydration solution (ORS)",
+            "small frequent feeds",
+            "continue breastfeeding if applicable"
+        ],
+        "age_group": [
+            "infant",
+            "child"
+        ]
+    },
+    {
+        "id": "C006",
+        "category": "pediatrics",
+        "guard_keywords": [
+            "ear pain",
+            "earache",
+            "child ear pain",
+            "pulling ear",
+            "crying ear pain"
+        ],
+        "primary_symptoms": [
+            "ear_pain",
+            "pulling_ear"
+        ],
+        "secondary_symptoms": [
+            "fever",
+            "irritability",
+            "difficulty_sleeping"
+        ],
+        "possible_disease": "Otitis Media (Ear Infection)",
+        "doctor_type": "Pediatrician / ENT",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "ear discharge",
+            "severe pain",
+            "hearing difficulty"
+        ],
+        "self_care": [
+            "keep ear dry",
+            "give prescribed pain relief",
+            "avoid inserting objects into ear"
+        ],
+        "age_group": [
+            "infant",
+            "child"
+        ]
+    },
+    {
+        "id": "C007",
+        "category": "pediatrics",
+        "guard_keywords": [
+            "rash",
+            "spots",
+            "viral rash",
+            "red spots child"
+        ],
+        "primary_symptoms": [
+            "skin_rash",
+            "fever"
+        ],
+        "secondary_symptoms": [
+            "itching",
+            "fatigue"
+        ],
+        "possible_disease": "Viral Rash",
+        "doctor_type": "Pediatrician",
+        "severity_hint": "low",
+        "warning_signs": [
+            "rash with high fever",
+            "rash spreading rapidly",
+            "difficulty breathing"
+        ],
+        "self_care": [
+            "keep skin clean and dry",
+            "avoid scratching",
+            "ensure adequate hydration"
+        ],
+        "age_group": [
+            "infant",
+            "child"
+        ]
+    },
+    {
+        "id": "C008",
+        "category": "pediatrics",
+        "guard_keywords": [
+            "chickenpox",
+            "blisters",
+            "itchy blisters",
+            "water filled rash"
+        ],
+        "primary_symptoms": [
+            "itchy_blisters",
+            "fever"
+        ],
+        "secondary_symptoms": [
+            "fatigue",
+            "loss_of_appetite"
+        ],
+        "possible_disease": "Chickenpox",
+        "doctor_type": "Pediatrician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "infected blisters",
+            "very high fever",
+            "breathing difficulty"
+        ],
+        "self_care": [
+            "keep nails short",
+            "calamine lotion for itching",
+            "isolate child to prevent spread"
+        ],
+        "age_group": [
+            "child"
+        ]
+    },
+    {
+        "id": "C009",
+        "category": "pediatrics",
+        "guard_keywords": [
+            "measles",
+            "red rash fever",
+            "koplik spots"
+        ],
+        "primary_symptoms": [
+            "fever",
+            "rash",
+            "cough"
+        ],
+        "secondary_symptoms": [
+            "runny_nose",
+            "red_eyes",
+            "light_sensitivity"
+        ],
+        "possible_disease": "Measles",
+        "doctor_type": "Pediatrician",
+        "severity_hint": "high",
+        "warning_signs": [
+            "difficulty breathing",
+            "persistent high fever",
+            "confusion or seizures"
+        ],
+        "self_care": [
+            "isolate child",
+            "ensure hydration",
+            "seek immediate medical care"
+        ],
+        "age_group": [
+            "child"
+        ]
+    },
+    {
+        "id": "C010",
+        "category": "pediatrics",
+        "guard_keywords": [
+            "mumps",
+            "swollen cheeks",
+            "jaw swelling",
+            "parotid swelling"
+        ],
+        "primary_symptoms": [
+            "swollen_cheeks",
+            "jaw_pain"
+        ],
+        "secondary_symptoms": [
+            "fever",
+            "headache",
+            "fatigue"
+        ],
+        "possible_disease": "Mumps",
+        "doctor_type": "Pediatrician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "severe swelling",
+            "testicular pain",
+            "persistent high fever"
+        ],
+        "self_care": [
+            "soft food diet",
+            "adequate fluids",
+            "isolate child to prevent spread"
+        ],
+        "age_group": [
+            "child"
+        ]
+    },
+    {
+        "id": "C011",
+        "category": "pediatrics",
+        "guard_keywords": [
+            "hand foot mouth",
+            "mouth ulcers",
+            "rash hands feet",
+            "hfmd"
+        ],
+        "primary_symptoms": [
+            "mouth_ulcers",
+            "rash_on_hands_feet"
+        ],
+        "secondary_symptoms": [
+            "fever",
+            "sore_throat",
+            "loss_of_appetite"
+        ],
+        "possible_disease": "Hand, Foot and Mouth Disease",
+        "doctor_type": "Pediatrician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "difficulty swallowing",
+            "signs of dehydration",
+            "persistent fever"
+        ],
+        "self_care": [
+            "soft cold foods",
+            "adequate hydration",
+            "maintain hand hygiene"
+        ],
+        "age_group": [
+            "child"
+        ]
+    },
+    {
+        "id": "C012",
+        "category": "pediatrics",
+        "guard_keywords": [
+            "teething",
+            "gum pain",
+            "baby drooling"
+        ],
+        "primary_symptoms": [
+            "gum_pain",
+            "drooling"
+        ],
+        "secondary_symptoms": [
+            "irritability",
+            "mild_fever"
+        ],
+        "possible_disease": "Teething Problems",
+        "doctor_type": "Pediatrician",
+        "severity_hint": "low",
+        "warning_signs": [
+            "high fever",
+            "persistent diarrhea",
+            "refusal to feed"
+        ],
+        "self_care": [
+            "teething rings",
+            "gentle gum massage",
+            "maintain oral hygiene"
+        ],
+        "age_group": [
+            "infant"
+        ]
+    },
+    {
+        "id": "C013",
+        "category": "pediatrics",
+        "guard_keywords": [
+            "poor weight",
+            "not gaining weight",
+            "underweight child"
+        ],
+        "primary_symptoms": [
+            "poor_weight_gain",
+            "loss_of_appetite"
+        ],
+        "secondary_symptoms": [
+            "fatigue",
+            "weakness",
+            "delayed_growth"
+        ],
+        "possible_disease": "Failure to Thrive",
+        "doctor_type": "Pediatrician",
+        "severity_hint": "high",
+        "warning_signs": [
+            "significant weight loss",
+            "developmental delay",
+            "recurrent infections"
+        ],
+        "self_care": [
+            "nutritional assessment",
+            "regular growth monitoring",
+            "follow pediatrician advice"
+        ],
+        "age_group": [
+            "infant",
+            "child"
+        ]
+    },
+    {
+        "id": "C014",
+        "category": "pediatrics",
+        "guard_keywords": [
+            "vomiting infant",
+            "projectile vomiting",
+            "hungry after vomiting"
+        ],
+        "primary_symptoms": [
+            "projectile_vomiting",
+            "constant_hunger"
+        ],
+        "secondary_symptoms": [
+            "weight_loss",
+            "dehydration"
+        ],
+        "possible_disease": "Pyloric Stenosis",
+        "doctor_type": "Pediatric Surgeon",
+        "severity_hint": "emergency",
+        "warning_signs": [
+            "forceful vomiting after feeds",
+            "poor weight gain",
+            "sunken eyes"
+        ],
+        "self_care": [
+            "do not delay medical care",
+            "immediate hospital evaluation"
+        ],
+        "age_group": [
+            "infant"
+        ]
+    },
+    {
+        "id": "C015",
+        "category": "pediatrics",
+        "guard_keywords": [
+            "fit",
+            "seizure",
+            "convulsion",
+            "fever fit"
+        ],
+        "primary_symptoms": [
+            "seizure",
+            "loss_of_consciousness"
+        ],
+        "secondary_symptoms": [
+            "confusion",
+            "fever"
+        ],
+        "possible_disease": "Febrile Seizure",
+        "doctor_type": "Pediatrician / Neurologist",
+        "severity_hint": "emergency",
+        "warning_signs": [
+            "seizure lasting more than 5 minutes",
+            "repeated seizures",
+            "difficulty waking child"
+        ],
+        "self_care": [
+            "place child on side",
+            "do not put anything in mouth",
+            "seek immediate medical care"
+        ],
+        "age_group": [
+            "child"
+        ]
+    },
+    {
+        "id": "E001",
+        "category": "ophthalmological",
+        "guard_keywords": [
+            "red eye",
+            "eye redness",
+            "sticky eyes"
+        ],
+        "primary_symptoms": [
+            "red_eye",
+            "eye_irritation"
+        ],
+        "secondary_symptoms": [
+            "watering",
+            "itching",
+            "discharge"
+        ],
+        "possible_disease": "Conjunctivitis (Pink Eye)",
+        "doctor_type": "Ophthalmologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "eye pain",
+            "vision changes",
+            "severe redness"
+        ],
+        "self_care": [
+            "avoid touching eyes",
+            "maintain eye hygiene",
+            "use prescribed drops"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "E002",
+        "category": "ophthalmological",
+        "guard_keywords": [
+            "eye pain",
+            "light sensitivity",
+            "photophobia"
+        ],
+        "primary_symptoms": [
+            "eye_pain",
+            "photophobia"
+        ],
+        "secondary_symptoms": [
+            "blurred_vision",
+            "headache",
+            "red_eye"
+        ],
+        "possible_disease": "Uveitis",
+        "doctor_type": "Ophthalmologist",
+        "severity_hint": "high",
+        "warning_signs": [
+            "vision loss",
+            "severe eye pain",
+            "increasing redness"
+        ],
+        "self_care": [
+            "avoid bright light",
+            "seek urgent eye evaluation"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "E003",
+        "category": "ophthalmological",
+        "guard_keywords": [
+            "blurred vision",
+            "cloudy vision",
+            "foggy vision",
+            "dim vision",
+            "vision not clear"
+        ],
+        "primary_symptoms": [
+            "blurred_vision",
+            "cloudy_vision"
+        ],
+        "secondary_symptoms": [
+            "poor_night_vision",
+            "halos_around_lights",
+            "glare_sensitivity"
+        ],
+        "possible_disease": "Cataract",
+        "doctor_type": "Ophthalmologist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "rapid vision worsening",
+            "difficulty in daily activities",
+            "frequent change in glasses"
+        ],
+        "self_care": [
+            "use adequate lighting",
+            "wear sunglasses outdoors",
+            "regular eye checkups"
+        ],
+        "age_group": [
+            "adult",
+            "elderly"
+        ]
+    },
+    {
+        "id": "E004",
+        "category": "ophthalmological",
+        "guard_keywords": [
+            "eye pressure",
+            "tunnel vision",
+            "loss of side vision",
+            "eye pain with nausea"
+        ],
+        "primary_symptoms": [
+            "eye_pressure",
+            "loss_of_peripheral_vision"
+        ],
+        "secondary_symptoms": [
+            "eye_pain",
+            "nausea",
+            "headache"
+        ],
+        "possible_disease": "Glaucoma",
+        "doctor_type": "Ophthalmologist",
+        "severity_hint": "high",
+        "warning_signs": [
+            "sudden vision loss",
+            "severe eye pain",
+            "vomiting with eye pain"
+        ],
+        "self_care": [
+            "do not delay eye consultation",
+            "adhere strictly to prescribed drops"
+        ],
+        "age_group": [
+            "adult",
+            "elderly"
+        ]
+    },
+    {
+        "id": "E005",
+        "category": "ophthalmological",
+        "guard_keywords": [
+            "dry eyes",
+            "burning eyes",
+            "gritty eyes",
+            "eye irritation"
+        ],
+        "primary_symptoms": [
+            "dry_eyes",
+            "burning_sensation"
+        ],
+        "secondary_symptoms": [
+            "redness",
+            "foreign_body_sensation",
+            "watering"
+        ],
+        "possible_disease": "Dry Eye Syndrome",
+        "doctor_type": "Ophthalmologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "persistent eye pain",
+            "blurred vision not improving"
+        ],
+        "self_care": [
+            "use artificial tears",
+            "reduce screen time",
+            "blink frequently"
+        ],
+        "age_group": [
+            "adult",
+            "elderly"
+        ]
+    },
+    {
+        "id": "E006",
+        "category": "ophthalmological",
+        "guard_keywords": [
+            "eye injury",
+            "foreign body in eye",
+            "something in eye",
+            "eye scratch"
+        ],
+        "primary_symptoms": [
+            "eye_pain",
+            "foreign_body_sensation"
+        ],
+        "secondary_symptoms": [
+            "watering",
+            "redness",
+            "light_sensitivity"
+        ],
+        "possible_disease": "Corneal Injury / Foreign Body",
+        "doctor_type": "Ophthalmologist",
+        "severity_hint": "high",
+        "warning_signs": [
+            "severe pain",
+            "vision changes",
+            "persistent redness"
+        ],
+        "self_care": [
+            "do not rub the eye",
+            "rinse with clean water if possible",
+            "seek urgent eye care"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "DENT001",
+        "category": "dental",
+        "guard_keywords": [
+            "tooth pain",
+            "toothache",
+            "tooth sensitivity",
+            "pain while eating"
+        ],
+        "primary_symptoms": [
+            "tooth_pain",
+            "sensitivity_hot_cold"
+        ],
+        "secondary_symptoms": [
+            "jaw_pain",
+            "headache",
+            "bad_breath"
+        ],
+        "possible_disease": "Dental Caries (Cavity)",
+        "doctor_type": "Dentist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "severe tooth pain",
+            "swelling of face",
+            "fever with tooth pain"
+        ],
+        "self_care": [
+            "maintain oral hygiene",
+            "avoid very hot or cold foods",
+            "schedule dental visit"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "DENT002",
+        "category": "dental",
+        "guard_keywords": [
+            "gum pain",
+            "bleeding gums",
+            "gum bleeding",
+            "swollen gums"
+        ],
+        "primary_symptoms": [
+            "bleeding_gums",
+            "gum_swelling"
+        ],
+        "secondary_symptoms": [
+            "bad_breath",
+            "pain_while_chewing",
+            "gum_redness"
+        ],
+        "possible_disease": "Gingivitis",
+        "doctor_type": "Dentist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "persistent gum bleeding",
+            "loose teeth",
+            "severe gum pain"
+        ],
+        "self_care": [
+            "maintain oral hygiene",
+            "gentle brushing and flossing",
+            "use antiseptic mouthwash"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "DENT002",
+        "category": "dental",
+        "guard_keywords": [
+            "gum pain",
+            "bleeding gums",
+            "gum bleeding",
+            "swollen gums"
+        ],
+        "primary_symptoms": [
+            "bleeding_gums",
+            "gum_swelling"
+        ],
+        "secondary_symptoms": [
+            "bad_breath",
+            "pain_while_chewing",
+            "gum_redness"
+        ],
+        "possible_disease": "Gingivitis",
+        "doctor_type": "Dentist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "persistent gum bleeding",
+            "loose teeth",
+            "severe gum pain"
+        ],
+        "self_care": [
+            "maintain oral hygiene",
+            "gentle brushing and flossing",
+            "use antiseptic mouthwash"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "DENT004",
+        "category": "dental",
+        "guard_keywords": [
+            "jaw pain",
+            "clicking jaw",
+            "jaw stiffness",
+            "pain while opening mouth"
+        ],
+        "primary_symptoms": [
+            "jaw_pain",
+            "jaw_clicking"
+        ],
+        "secondary_symptoms": [
+            "difficulty_opening_mouth",
+            "ear_pain",
+            "headache"
+        ],
+        "possible_disease": "TMJ Disorder",
+        "doctor_type": "Dentist",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "jaw locking",
+            "severe persistent pain"
+        ],
+        "self_care": [
+            "avoid hard foods",
+            "jaw relaxation exercises",
+            "warm compress"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "DENT005",
+        "category": "dental",
+        "guard_keywords": [
+            "mouth ulcer",
+            "ulcer",
+            "pain in mouth",
+            "white sore mouth"
+        ],
+        "primary_symptoms": [
+            "mouth_ulcer",
+            "pain_in_mouth"
+        ],
+        "secondary_symptoms": [
+            "difficulty_eating",
+            "burning_sensation"
+        ],
+        "possible_disease": "Aphthous Ulcer (Mouth Ulcer)",
+        "doctor_type": "Dentist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "ulcer lasting more than 2 weeks",
+            "multiple painful ulcers",
+            "weight loss"
+        ],
+        "self_care": [
+            "avoid spicy foods",
+            "maintain oral hygiene",
+            "use prescribed topical gels"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "N001",
+        "category": "nutrition",
+        "guard_keywords": [
+            "weakness",
+            "tired",
+            "fatigue",
+            "low energy"
+        ],
+        "primary_symptoms": [
+            "general_weakness",
+            "easy_fatigue"
+        ],
+        "secondary_symptoms": [
+            "poor_concentration",
+            "body_pain"
+        ],
+        "possible_disease": "General Nutritional Deficiency",
+        "doctor_type": "General Physician",
+        "severity_hint": "low",
+        "warning_signs": [
+            "persistent weakness",
+            "unintentional weight loss"
+        ],
+        "self_care": [
+            "balanced diet",
+            "adequate sleep",
+            "hydration"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "N002",
+        "category": "nutrition",
+        "guard_keywords": [
+            "pale",
+            "anemia",
+            "low hemoglobin",
+            "breathless on exertion"
+        ],
+        "primary_symptoms": [
+            "pale_skin",
+            "fatigue"
+        ],
+        "secondary_symptoms": [
+            "dizziness",
+            "shortness_of_breath",
+            "headache"
+        ],
+        "possible_disease": "Iron Deficiency Anemia",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "chest pain",
+            "fainting",
+            "very low energy"
+        ],
+        "self_care": [
+            "iron rich diet",
+            "take supplements if prescribed",
+            "regular blood check"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "N003",
+        "category": "nutrition",
+        "guard_keywords": [
+            "bone pain",
+            "vitamin d",
+            "muscle weakness",
+            "body ache"
+        ],
+        "primary_symptoms": [
+            "bone_pain",
+            "muscle_weakness"
+        ],
+        "secondary_symptoms": [
+            "back_pain",
+            "frequent_fractures"
+        ],
+        "possible_disease": "Vitamin D Deficiency",
+        "doctor_type": "Orthopedist / General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "frequent fractures",
+            "severe muscle weakness"
+        ],
+        "self_care": [
+            "sunlight exposure",
+            "vitamin D rich foods",
+            "supplements if prescribed"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "N004",
+        "category": "nutrition",
+        "guard_keywords": [
+            "hair fall",
+            "hair loss",
+            "excessive hair fall"
+        ],
+        "primary_symptoms": [
+            "excessive_hair_fall"
+        ],
+        "secondary_symptoms": [
+            "dry_skin",
+            "fatigue",
+            "brittle_hair"
+        ],
+        "possible_disease": "Nutritional Hair Loss",
+        "doctor_type": "Dermatologist",
+        "severity_hint": "low",
+        "warning_signs": [
+            "patchy hair loss",
+            "hair loss with weight loss"
+        ],
+        "self_care": [
+            "balanced protein intake",
+            "iron and vitamin rich diet",
+            "stress management"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "N005",
+        "category": "nutrition",
+        "guard_keywords": [
+            "mouth ulcer",
+            "burning tongue",
+            "tingling hands",
+            "numbness"
+        ],
+        "primary_symptoms": [
+            "recurrent_mouth_ulcers",
+            "burning_tongue"
+        ],
+        "secondary_symptoms": [
+            "fatigue",
+            "loss_of_appetite",
+            "memory_issues"
+        ],
+        "possible_disease": "Vitamin B12 Deficiency",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "numbness in hands or feet",
+            "balance problems",
+            "severe weakness"
+        ],
+        "self_care": [
+            "consume B12-rich foods",
+            "take supplements if prescribed",
+            "regular blood tests"
+        ],
+        "age_group": [
+            "adult",
+            "elderly"
+        ]
+    },
+    {
+        "id": "N006",
+        "category": "nutrition",
+        "guard_keywords": [
+            "night blindness",
+            "dry eyes",
+            "poor vision at night"
+        ],
+        "primary_symptoms": [
+            "night_blindness",
+            "dry_eyes"
+        ],
+        "secondary_symptoms": [
+            "eye_irritation",
+            "frequent_eye_infections"
+        ],
+        "possible_disease": "Vitamin A Deficiency",
+        "doctor_type": "Ophthalmologist",
+        "severity_hint": "high",
+        "warning_signs": [
+            "severe vision loss",
+            "corneal dryness"
+        ],
+        "self_care": [
+            "consume vitamin A rich foods",
+            "avoid self-medication",
+            "eye checkups"
+        ],
+        "age_group": [
+            "child",
+            "adult"
+        ]
+    },
+    {
+        "id": "N007",
+        "category": "nutrition",
+        "guard_keywords": [
+            "bleeding gums",
+            "gum bleeding",
+            "easy bruising"
+        ],
+        "primary_symptoms": [
+            "bleeding_gums"
+        ],
+        "secondary_symptoms": [
+            "slow_wound_healing",
+            "fatigue",
+            "joint_pain"
+        ],
+        "possible_disease": "Vitamin C Deficiency (Scurvy)",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "loose teeth",
+            "severe weakness"
+        ],
+        "self_care": [
+            "increase citrus fruit intake",
+            "balanced diet",
+            "supplements if prescribed"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "N008",
+        "category": "nutrition",
+        "guard_keywords": [
+            "muscle cramps",
+            "leg cramps",
+            "muscle twitching"
+        ],
+        "primary_symptoms": [
+            "muscle_cramps"
+        ],
+        "secondary_symptoms": [
+            "tremors",
+            "fatigue",
+            "irregular_heartbeat"
+        ],
+        "possible_disease": "Magnesium Deficiency",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "severe muscle spasms",
+            "palpitations"
+        ],
+        "self_care": [
+            "magnesium rich foods",
+            "hydration",
+            "avoid excessive caffeine"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    },
+    {
+        "id": "N009",
+        "category": "nutrition",
+        "guard_keywords": [
+            "poor growth",
+            "underweight",
+            "not gaining weight"
+        ],
+        "primary_symptoms": [
+            "poor_weight_gain",
+            "thin_body"
+        ],
+        "secondary_symptoms": [
+            "low_energy",
+            "frequent_illness"
+        ],
+        "possible_disease": "Protein Energy Malnutrition",
+        "doctor_type": "General Physician / Pediatrician",
+        "severity_hint": "high",
+        "warning_signs": [
+            "severe weight loss",
+            "delayed development in children"
+        ],
+        "self_care": [
+            "high protein diet",
+            "nutritional supplementation",
+            "regular growth monitoring"
+        ],
+        "age_group": [
+            "child"
+        ]
+    },
+    {
+        "id": "N010",
+        "category": "nutrition",
+        "guard_keywords": [
+            "leg pain",
+            "calcium",
+            "bone pain"
+        ],
+        "primary_symptoms": [
+            "bone_weakness",
+            "leg_pain"
+        ],
+        "secondary_symptoms": [
+            "muscle_cramps",
+            "back_pain"
+        ],
+        "possible_disease": "Calcium Deficiency",
+        "doctor_type": "General Physician",
+        "severity_hint": "medium",
+        "warning_signs": [
+            "frequent fractures",
+            "severe bone pain"
+        ],
+        "self_care": [
+            "calcium rich foods",
+            "sun exposure",
+            "supplements if advised"
+        ],
+        "age_group": [
+            "adult",
+            "elderly"
+        ]
+    },
+    {
+        "id": "N011",
+        "category": "nutrition",
+        "guard_keywords": [
+            "weight loss",
+            "loss of appetite",
+            "poor nutrition"
+        ],
+        "primary_symptoms": [
+            "unintentional_weight_loss"
+        ],
+        "secondary_symptoms": [
+            "loss_of_appetite",
+            "fatigue",
+            "weak_immunity"
+        ],
+        "possible_disease": "Malnutrition",
+        "doctor_type": "General Physician",
+        "severity_hint": "high",
+        "warning_signs": [
+            "extreme weight loss",
+            "frequent infections"
+        ],
+        "self_care": [
+            "nutrient dense diet",
+            "dietician consultation",
+            "monitor weight regularly"
+        ],
+        "age_group": [
+            "child",
+            "adult",
+            "elderly"
+        ]
+    },
+    {
+        "id": "N012",
+        "category": "nutrition",
+        "guard_keywords": [
+            "dry skin",
+            "cracked lips",
+            "rough skin"
+        ],
+        "primary_symptoms": [
+            "dry_skin",
+            "cracked_lips"
+        ],
+        "secondary_symptoms": [
+            "itching",
+            "hair_dryness"
+        ],
+        "possible_disease": "Essential Fatty Acid Deficiency",
+        "doctor_type": "General Physician",
+        "severity_hint": "low",
+        "warning_signs": [
+            "skin infections",
+            "poor wound healing"
+        ],
+        "self_care": [
+            "consume healthy fats",
+            "hydration",
+            "balanced diet"
+        ],
+        "age_group": [
+            "adult"
+        ]
+    }
+]

@@ -1,23 +1,3 @@
-/**
- * 🔵 CHATBOT UI — FRONTEND ONLY (NO LOGIC INCLUDED)
- * -------------------------------------------------
- * This component ONLY handles:
- *  - UI rendering
- *  - Animations
- *  - Message display
- *  - Voice button animation
- *  - Multi-language switching (UI only)
- * 
- * 🟡 BACKEND / CHATBOT ENGINE to be plugged in by developer:
- *  1️⃣ Replace dummy "botReplies" with real responses.
- *  2️⃣ Connect sendMessage() → backend model / offline engine.
- *  3️⃣ Insert NLP / intent detection logic.
- *  4️⃣ Voice recording → speech-to-text integration.
- *  5️⃣ Add quick replies or recommended actions.
- * 
- * NOTE: This UI works fully offline, backend must also support offline mode.
- */
-
 import React, { useState, useRef, useEffect } from "react";
 import {
     View,
@@ -27,232 +7,139 @@ import {
     TextInput,
     FlatList,
     KeyboardAvoidingView,
-    Platform,
     StyleSheet,
     Dimensions,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
+import {
+    chatbotReply,
+    resetChatbot,
+} from "./chatbot/logic"; // ✅ LOGIC SYNCED
+
 const { height } = Dimensions.get("window");
 
-type Lang = 'en' | 'hi' | 'pn';
+type Message = {
+    id: string;
+    from: "bot" | "user";
+    text: string;
+    severity?: "BASIC" | "MEDIUM" | "EMERGENCY";
+    options?: { label: string; value: any }[];
+};
 
 export default function ChatbotWidget() {
     const [open, setOpen] = useState(false);
-    const [lang, setLang] = useState<Lang>("hi");
-    const [messages, setMessages] = useState([
-        // 🟦 Initial greeting — backend can replace this
-        { id: "1", from: "bot", text: "नमस्ते! मैं Aarogya Assistant हूँ 👋" },
-    ]);
+    const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState("");
     const [typing, setTyping] = useState(false);
-    const [recording, setRecording] = useState(false);
 
     const fadeAnim = useRef(new Animated.Value(0)).current;
     const scaleAnim = useRef(new Animated.Value(0.8)).current;
-    const pulseAnim = useRef(new Animated.Value(1)).current;
-
     const flatListRef = useRef<FlatList>(null);
 
-    /* --------------------------------------------------------------------------
-       AUTO-SCROLL — runs every time a new message is added
-       (No logic needed here, backend dev does not need to touch this)
-    --------------------------------------------------------------------------- */
+    /* ---------------- AUTO SCROLL ---------------- */
     useEffect(() => {
         setTimeout(() => {
             flatListRef.current?.scrollToEnd({ animated: true });
         }, 100);
-    }, [messages, typing]);
+    }, [messages]);
 
-    /* --------------------------------------------------------------------------
-       SOUND EFFECTS (OPTIONAL)
-       Backend dev: can enable when sound files are available
-    --------------------------------------------------------------------------- */
-    const playSendSound = async () => { };
-    const playReceiveSound = async () => { };
-
-    /* --------------------------------------------------------------------------
-       MIC BUTTON — only UI animation
-       Backend developer must add:
-       - Actual voice recording
-       - Speech-to-text engine (offline)
-       - Pass final transcript into chatbot logic
-    --------------------------------------------------------------------------- */
-    const startMicPulse = () => {
-        Animated.loop(
-            Animated.sequence([
-                Animated.timing(pulseAnim, { toValue: 1.2, duration: 400, useNativeDriver: true }),
-                Animated.timing(pulseAnim, { toValue: 1, duration: 400, useNativeDriver: true }),
-            ])
-        ).start();
-    };
-
-    const stopMicPulse = () => {
-        pulseAnim.stopAnimation();
-        pulseAnim.setValue(1);
-    };
-
-    const toggleRecording = () => {
-        if (!recording) {
-            setRecording(true);
-            startMicPulse();
-
-            /**
-             * 🟡 BACKEND DEVELOPER:
-             * Start voice recording here.
-             * 
-             * After recording:
-             *   1. Convert to text
-             *   2. Set input to transcript → setInput(transcript)
-             *   3. Call sendMessage()
-             */
-        } else {
-            setRecording(false);
-            stopMicPulse();
-
-            // TEMPORARY — backend will replace
-            setInput("(Voice recorded — offline mode)");
-        }
-    };
-
-    /* --------------------------------------------------------------------------
-       BACKEND REPLIES (PLACEHOLDER)
-       Backend developer must:
-       - Replace with actual model output
-       - Add condition-based responses
-       - Add symptom detection / follow-up questions
-    --------------------------------------------------------------------------- */
-    const botReplies = {
-        en: "I have received your message. Please wait…",
-        hi: "मैंने आपकी बात समझ ली है। कृपया थोड़ा इंतजार करें…",
-        pn: "ਤੁਹਾਡਾ ਸੁਨੇਹਾ ਮਿਲ ਗਿਆ ਹੈ। ਕੁਝ ਸਮਾਂ ਉਡੀਕ ਕਰੋ…",
-    };
-
-    const greetings = {
-        en: ["Hello! I am Aarogya Assistant 👋", "How may I help you today?"],
-        hi: ["नमस्ते! मैं Aarogya Assistant हूँ 👋", "आप कैसे मदद चाहते हैं?"],
-        pn: ["ਸਤ ਸ੍ਰੀ ਅਕਾਲ! ਮੈਂ Aarogya Assistant ਹਾਂ 👋", "ਤੁਹਾਨੂੰ ਕਿਸ ਚੀਜ਼ ਦੀ ਜ਼ਰੂਰਤ ਹੈ?"],
-    };
-
-    /* --------------------------------------------------------------------------
-       UI OPEN/CLOSE — no backend logic needed
-    --------------------------------------------------------------------------- */
+    /* ---------------- OPEN / CLOSE CHAT ---------------- */
     const toggleChat = () => {
         if (!open) {
             setOpen(true);
             Animated.parallel([
-                Animated.timing(fadeAnim, { toValue: 1, duration: 200, useNativeDriver: true }),
-                Animated.spring(scaleAnim, { toValue: 1, useNativeDriver: true }),
+                Animated.timing(fadeAnim, {
+                    toValue: 1,
+                    duration: 200,
+                    useNativeDriver: true,
+                }),
+                Animated.spring(scaleAnim, {
+                    toValue: 1,
+                    useNativeDriver: true,
+                }),
             ]).start();
         } else {
             Animated.parallel([
-                Animated.timing(fadeAnim, { toValue: 0, duration: 150, useNativeDriver: true }),
-                Animated.timing(scaleAnim, { toValue: 0.8, duration: 150, useNativeDriver: true }),
-            ]).start(() => setOpen(false));
+                Animated.timing(fadeAnim, {
+                    toValue: 0,
+                    duration: 150,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(scaleAnim, {
+                    toValue: 0.8,
+                    duration: 150,
+                    useNativeDriver: true,
+                }),
+            ]).start(() => {
+                setOpen(false);
+                setMessages([]);
+            });
         }
     };
 
-    /* --------------------------------------------------------------------------
-       SEND MESSAGE — MAIN ENTRY POINT FOR CHATBOT LOGIC
-       🟡 Backend developer will integrate their offline engine here:
-       Steps for developer:
-         1. Take user message → input
-         2. Process through NLP model / rule engine
-         3. Generate reply
-         4. Push reply into messages array
-    --------------------------------------------------------------------------- */
-    const sendMessage = async () => {
-        if (!input.trim()) return;
+    /* ---------------- INTRO (ONLY ON OPEN) ---------------- */
+    useEffect(() => {
+        if (open && messages.length === 0) {
+            resetChatbot(); // 🔁 full reset
+            const intro = chatbotReply("");
+            setMessages([
+                {
+                    id: Date.now().toString(),
+                    from: "bot",
+                    text: intro.text,
+                    options: intro.options,
+                },
+            ]);
+        }
+    }, [open]);
 
-        // USER MESSAGE (UI only)
-        const userMsg = { id: Date.now().toString(), from: "user", text: input };
+    /* ---------------- SEND MESSAGE ---------------- */
+    const sendMessage = (textInvoked?: string) => {
+        const textToSend = typeof textInvoked === "string" ? textInvoked : input;
+        if (!textToSend.trim()) return;
+
+        const userMsg: Message = {
+            id: Date.now().toString(),
+            from: "user",
+            text: textToSend,
+        };
+
         setMessages((prev) => [...prev, userMsg]);
         setInput("");
-
         setTyping(true);
-        await playSendSound();
 
-        /**
-         * 🟡 BACKEND DEVELOPER:
-         * Replace `botReplies[lang]` with:
-         *
-         * const response = chatbotEngine.process(userMsg.text, lang);
-         *
-         * where chatbotEngine = offline ML model / rule engine
-         */
+        setTimeout(() => {
+            const reply = chatbotReply(userMsg.text);
 
-        setTimeout(async () => {
-            const botMsg = {
-                id: (Date.now() + 3).toString(),
+            const botMsg: Message = {
+                id: (Date.now() + 1).toString(),
                 from: "bot",
-                text: botReplies[lang], // <-- replace this with real logic
+                text: reply.text,
+                severity: reply.severity,
+                options: reply.options,
             };
 
             setMessages((prev) => [...prev, botMsg]);
             setTyping(false);
-            await playReceiveSound();
-        }, 1500);
+        }, 700);
     };
 
-    /* --------------------------------------------------------------------------
-       LANGUAGE SWITCH — ONLY UI
-       Backend developer should update response logic to support multi-language
-    --------------------------------------------------------------------------- */
-    const changeLanguage = () => {
-        let next: Lang = lang === "hi" ? "en" : lang === "en" ? "pn" : "hi";
-        setLang(next);
-
-        // RESET CHAT WITH NEW LANG
+    /* ---------------- RESET BUTTON ---------------- */
+    const resetChat = () => {
+        resetChatbot();
+        const intro = chatbotReply("");
         setMessages([
-            { id: Date.now().toString(), from: "bot", text: greetings[next][0] },
-            { id: (Date.now() + 1).toString(), from: "bot", text: greetings[next][1] },
+            {
+                id: Date.now().toString(),
+                from: "bot",
+                text: intro.text,
+                options: intro.options,
+            },
         ]);
-
-        /**
-         * 🟡 BACKEND DEVELOPER:
-         * You must ensure chatbot replies in selected language.
-         * Suggested approach:
-         *   - Maintain responses in 3 languages
-         *   - Model should detect language context
-         */
     };
 
-    /* --------------------------------------------------------------------------
-       TYPING INDICATOR — UI ONLY
-       Backend developer does NOT modify this
-    --------------------------------------------------------------------------- */
-    const TypingWave = () => {
-        const dot1 = useRef(new Animated.Value(0)).current;
-        const dot2 = useRef(new Animated.Value(0)).current;
-        const dot3 = useRef(new Animated.Value(0)).current;
-
-        useEffect(() => {
-            const animate = (dot: Animated.Value, delay: number) => {
-                Animated.loop(
-                    Animated.sequence([
-                        Animated.timing(dot, { toValue: -5, duration: 400, useNativeDriver: true, delay }),
-                        Animated.timing(dot, { toValue: 0, duration: 400, useNativeDriver: true }),
-                    ])
-                ).start();
-            };
-
-            animate(dot1, 0);
-            animate(dot2, 200);
-            animate(dot3, 400);
-        }, []);
-
-        return (
-            <View style={local.waveContainer}>
-                <Animated.View style={[local.waveDot, { transform: [{ translateY: dot1 }] }]} />
-                <Animated.View style={[local.waveDot, { transform: [{ translateY: dot2 }] }]} />
-                <Animated.View style={[local.waveDot, { transform: [{ translateY: dot3 }] }]} />
-            </View>
-        );
-    };
-
-    /* --------------------------------------------------------------------------
-       RETURN UI
-    --------------------------------------------------------------------------- */
+    /* ---------------- UI ---------------- */
     return (
         <>
             {!open && (
@@ -263,54 +150,71 @@ export default function ChatbotWidget() {
 
             {open && (
                 <Animated.View style={[local.overlay, { opacity: fadeAnim }]}>
-                    <Animated.View style={[local.chatCard, { transform: [{ scale: scaleAnim }] }]}>
-
+                    <Animated.View
+                        style={[local.chatCard, { transform: [{ scale: scaleAnim }] }]}
+                    >
                         {/* HEADER */}
                         <View style={local.header}>
-                            <View style={{ flexDirection: "row", alignItems: "center" }}>
-                                <Text style={local.avatar}>🩺</Text>
-                                <Text style={local.headerTitle}>Aarogya Assistant</Text>
-                            </View>
+                            <Text style={local.headerTitle}>🩺 Aarogya Assistant</Text>
 
-                            <View style={{ flexDirection: "row", alignItems: "center" }}>
-                                <TouchableOpacity onPress={changeLanguage} style={local.langBtn}>
-                                    <Text style={{ color: "#2563EB", fontWeight: "700" }}>{lang.toUpperCase()}</Text>
+                            <View style={{ flexDirection: "row" }}>
+                                <TouchableOpacity onPress={resetChat} style={{ marginRight: 16 }}>
+                                    <Feather name="rotate-ccw" size={18} color="#fff" />
                                 </TouchableOpacity>
 
-                                <TouchableOpacity onPress={toggleChat} style={{ marginLeft: 10 }}>
+                                <TouchableOpacity onPress={toggleChat}>
                                     <Feather name="x" size={22} color="#fff" />
                                 </TouchableOpacity>
                             </View>
                         </View>
 
-                        {/* CHAT AREA */}
+                        {/* CHAT */}
                         <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
                             <FlatList
                                 ref={flatListRef}
                                 data={messages}
                                 keyExtractor={(item) => item.id}
+                                contentContainerStyle={{ padding: 12 }}
                                 renderItem={({ item }) => (
                                     <View
                                         style={[
                                             local.msgBubble,
                                             item.from === "user" ? local.userBubble : local.botBubble,
+                                            item.severity && local[item.severity as keyof typeof local],
                                         ]}
                                     >
-                                        <Text style={[local.msgText, item.from === "user" ? { color: "#fff" } : {}]}>
+                                        <Text
+                                            style={[
+                                                local.msgText,
+                                                item.from === "user" && { color: "#fff" },
+                                            ]}
+                                        >
                                             {item.text}
                                         </Text>
+
+                                        {/* RENDER OPTIONS IF AVAILABLE */}
+                                        {item.options && (
+                                            <View style={local.optionsContainer}>
+                                                {item.options.map((opt: { label: string; value: any }, idx: number) => (
+                                                    <TouchableOpacity
+                                                        key={idx}
+                                                        style={local.optionBtn}
+                                                        onPress={() => sendMessage(String(opt.value))}
+                                                    >
+                                                        <Text style={local.optionText}>{opt.label}</Text>
+                                                    </TouchableOpacity>
+                                                ))}
+                                            </View>
+                                        )}
                                     </View>
                                 )}
-                                contentContainerStyle={{ padding: 12 }}
                             />
 
                             {typing && (
-                                <View style={{ marginLeft: 10, marginBottom: 8 }}>
-                                    <TypingWave />
-                                </View>
+                                <Text style={local.typing}>Aarogya Assistant is typing…</Text>
                             )}
 
-                            {/* INPUT + MIC */}
+                            {/* INPUT */}
                             <View style={local.inputRow}>
                                 <TextInput
                                     value={input}
@@ -318,16 +222,7 @@ export default function ChatbotWidget() {
                                     placeholder="Type message…"
                                     style={local.input}
                                 />
-
-                                {/* MIC BUTTON */}
-                                <Animated.View style={{ transform: [{ scale: pulseAnim }] }}>
-                                    <TouchableOpacity style={local.micBtn} onPress={toggleRecording}>
-                                        <Feather name="mic" size={18} color="#fff" />
-                                    </TouchableOpacity>
-                                </Animated.View>
-
-                                {/* SEND */}
-                                <TouchableOpacity style={local.sendBtn} onPress={sendMessage}>
+                                <TouchableOpacity style={local.sendBtn} onPress={() => sendMessage()}>
                                     <Feather name="send" size={20} color="#fff" />
                                 </TouchableOpacity>
                             </View>
@@ -339,9 +234,7 @@ export default function ChatbotWidget() {
     );
 }
 
-/* --------------------------------------------------------------------------
-   STYLES (unchanged)
--------------------------------------------------------------------------- */
+/* ---------------- STYLES ---------------- */
 const local = StyleSheet.create({
     floatingBtn: {
         position: "absolute",
@@ -357,7 +250,10 @@ const local = StyleSheet.create({
 
     overlay: {
         position: "absolute",
-        top: 0, left: 0, right: 0, bottom: 0,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
         backgroundColor: "rgba(0,0,0,0.55)",
         alignItems: "center",
         justifyContent: "center",
@@ -379,38 +275,78 @@ const local = StyleSheet.create({
         alignItems: "center",
     },
 
-    avatar: { fontSize: 24, marginRight: 6 },
-    headerTitle: { color: "#fff", fontSize: 18, fontWeight: "700" },
-
-    langBtn: {
-        backgroundColor: "#fff",
-        paddingVertical: 5,
-        paddingHorizontal: 10,
-        borderRadius: 8,
+    headerTitle: {
+        color: "#fff",
+        fontSize: 18,
+        fontWeight: "700",
     },
 
     msgBubble: {
-        maxWidth: "75%",
-        padding: 10,
-        borderRadius: 12,
-        marginVertical: 5,
+        maxWidth: "80%",
+        padding: 12,
+        borderRadius: 14,
+        marginVertical: 6,
     },
 
-    botBubble: { backgroundColor: "#EFF3FF", alignSelf: "flex-start" },
-    userBubble: { backgroundColor: "#2563EB", alignSelf: "flex-end" },
-
-    msgText: { fontSize: 14 },
-
-    waveContainer: {
-        flexDirection: "row",
-        alignItems: "center",
+    botBubble: {
+        backgroundColor: "#EFF3FF",
+        alignSelf: "flex-start",
     },
-    waveDot: {
-        width: 8,
-        height: 8,
+
+    userBubble: {
         backgroundColor: "#2563EB",
-        borderRadius: 4,
-        marginHorizontal: 3,
+        alignSelf: "flex-end",
+    },
+
+    BASIC: {
+        borderLeftWidth: 4,
+        borderLeftColor: "#22C55E",
+    },
+
+    MEDIUM: {
+        borderLeftWidth: 4,
+        borderLeftColor: "#FACC15",
+    },
+
+    EMERGENCY: {
+        borderLeftWidth: 4,
+        borderLeftColor: "#DC2626",
+    },
+
+    msgText: {
+        fontSize: 14,
+        lineHeight: 18,
+    },
+
+    // ✅ ADDED STYLES FOR OPTIONS
+    optionsContainer: {
+        marginTop: 10,
+        flexDirection: "row",
+        flexWrap: "wrap",
+        gap: 8,
+    },
+
+    optionBtn: {
+        backgroundColor: "#ffffff",
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+        borderRadius: 20,
+        borderWidth: 1,
+        borderColor: "#2563EB",
+        marginBottom: 6,
+    },
+
+    optionText: {
+        color: "#2563EB",
+        fontSize: 13,
+        fontWeight: "600",
+    },
+
+    typing: {
+        fontSize: 12,
+        color: "#6B7280",
+        marginLeft: 12,
+        marginBottom: 6,
     },
 
     inputRow: {
@@ -427,13 +363,6 @@ const local = StyleSheet.create({
         backgroundColor: "#F3F4F6",
         paddingHorizontal: 14,
         paddingVertical: 10,
-        borderRadius: 12,
-    },
-
-    micBtn: {
-        marginLeft: 8,
-        backgroundColor: "#DC2626",
-        padding: 10,
         borderRadius: 12,
     },
 
