@@ -9,12 +9,17 @@ import {
   Image,
   ScrollView,
   StyleSheet,
+  Switch,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { API_BASE } from "./constants/api";
+import { SyncManager } from "./services/SyncManager";
+
+// Simple Global State for Simulation
+export let IS_OFFLINE_SIMULATED = false;
 
 export default function ProfileScreen() {
   const insets = useSafeAreaInsets();
@@ -23,6 +28,25 @@ export default function ProfileScreen() {
   const [activeTab, setActiveTab] = useState<"home" | "records" | "profile">(
     "profile"
   );
+
+  // Simulation State
+  const [isSimulatedOffline, setIsSimulatedOffline] = useState(IS_OFFLINE_SIMULATED);
+
+  const toggleSimulation = (val: boolean) => {
+    IS_OFFLINE_SIMULATED = val;
+    setIsSimulatedOffline(val);
+    Alert.alert(
+      val ? "🛑 Offline Mode ON" : "🟢 Online Mode ON",
+      val
+        ? "The app will now pretend to have no internet. Submissions will go to the Outbox."
+        : "App is back online. Sync will trigger shortly."
+    );
+
+    if (!val) {
+      SyncManager.forceSync();
+    }
+  };
+
 
   /* ===== LANGUAGE STATE ===== */
   const [language, setLanguage] = useState<
@@ -205,6 +229,22 @@ export default function ProfileScreen() {
               onPress={handleLogout}
             />
           </Card>
+
+          {/* DEVELOPER TOOLS (Safe Testing) */}
+          <View style={{ marginTop: 10, paddingHorizontal: 16, marginBottom: 20 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.8)', padding: 12, borderRadius: 12, borderWidth: 1, borderColor: '#eee' }}>
+              <View>
+                <Text style={{ fontWeight: '600', color: '#374151', fontSize: 13 }}>Simulate Offline Mode</Text>
+                <Text style={{ fontSize: 11, color: '#6B7280' }}>Force app to use "Outbox"</Text>
+              </View>
+              <Switch
+                value={isSimulatedOffline}
+                onValueChange={toggleSimulation}
+                trackColor={{ false: "#767577", true: "#EF4444" }}
+                thumbColor={isSimulatedOffline ? "#f4f3f4" : "#f4f3f4"}
+              />
+            </View>
+          </View>
 
           {/* ===== DISCLAIMER ===== */}
           <View style={styles.disclaimerWrapper}>
