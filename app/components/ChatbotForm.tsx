@@ -1,5 +1,6 @@
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNetInfo } from "@react-native-community/netinfo"; // Added
 import * as FileSystem from "expo-file-system";
 import * as ImagePicker from "expo-image-picker";
 import React, { JSX, useState } from "react";
@@ -16,11 +17,14 @@ import {
 import { styles } from "../../styles/dashboardStyles";
 import { API_BASE } from "../constants/api";
 import { CHATBOT_TEXT, Lang } from "../constants/chatbotText";
+import { IS_OFFLINE_SIMULATED } from "../profile-screen";
+import { OfflineQueue } from "../services/OfflineQueue";
 
 type MediaItem = { uri: string; type: "image" | "video"; name?: string };
 
 export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
   const t = CHATBOT_TEXT[lang];
+  const netInfo = useNetInfo(); // NetInfo Hook
 
   // ---------- Form State ----------
   const [queryNumber, setQueryNumber] = useState("");
@@ -83,7 +87,7 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
     try {
       // Force copy to cache to ensure we have a valid file:// path that fetch can read
       const filename = uri.split("/").pop() || `file-${Date.now()}`;
-      const dest = `${FileSystem.cacheDirectory}${Date.now()}-${filename}`;
+      const dest = `${(FileSystem as any).cacheDirectory}${Date.now()}-${filename}`;
       await FileSystem.copyAsync({ from: uri, to: dest });
 
       // ENSURE protocol exists
@@ -115,6 +119,42 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
         setLoading(false);
         return;
       }
+
+      // --- OFFLINE CHECK ---
+      const isReallyOffline = netInfo.isConnected === false;
+      if (isReallyOffline || IS_OFFLINE_SIMULATED) {
+        // Prepare Attachments for Queue (keep local URIs)
+        const curatedAttachments = [];
+        for (const item of attachments) {
+          let uri = item.uri;
+          if (!uri.startsWith("file://") && !uri.startsWith("content://")) {
+            uri = await normalizeUriForUpload(uri) || uri;
+          }
+          curatedAttachments.push({ ...item, uri });
+        }
+
+        const payload = {
+          queryNumber,
+          phone: sanitizeDigits(phone),
+          summary,
+          attachments: curatedAttachments // Store LOCAL URIs
+        };
+
+        await OfflineQueue.addToQueue('RECORD', payload); // Type 'RECORD'
+
+        Alert.alert("Saved to Outbox 📡", "No internet. Your query and media have been saved locally. They will upload automatically when online.");
+
+        // Cleanup
+        setQueryNumber("");
+        setPhone("");
+        setSummary("");
+        setAttachments([]);
+        setErrors({});
+        setLoading(false);
+        return;
+      }
+
+      // --- ONLINE FLOW BELOW ---
 
       // 1. Get Upload Signature
       const sigRes = await fetch(`${API_BASE}/api/media/signature`, {
@@ -281,9 +321,14 @@ export default function ChatbotForm({ lang }: { lang: Lang }): JSX.Element {
 
       {/* Media Attachments */}
       <View style={styles.apptFieldGroup}>
-        <View style={styles.chatbotLabelRow}>
-          <Feather name="image" size={16} color="#374151" style={{ marginRight: 6 }} />
-          <Text style={styles.apptLabel}>{t.attachments}</Text>
+        <View style={{ marginBottom: 10 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
+            <Feather name="image" size={16} color="#374151" style={{ marginRight: 6 }} />
+            <Text style={styles.apptLabel}>{t.attachments}</Text>
+          </View>
+          <Text style={{ fontSize: 11, color: '#6B7280', marginBottom: 6 }}>
+            (Photos: Max 10MB • Videos: Max 100MB)
+          </Text>
         </View>
 
         <View style={styles.chatbotRow}>

@@ -1,33 +1,27 @@
 // app/dashboard.tsx
-import React, { useState, useRef } from "react";
+import { Feather } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
+import { router } from "expo-router";
+import React, { useState } from "react";
 import {
-  View,
-  Text,
-  ScrollView,
-  TouchableOpacity,
-  Image,
-  Alert,
   Animated,
-  TextInput,
-  Platform,
+  Image,
   Modal,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { LinearGradient } from "expo-linear-gradient";
-import { BlurView } from "expo-blur";
-import { Feather } from "@expo/vector-icons";
-import LottieView from "lottie-react-native";
-import Swiper from "react-native-swiper";
 import { styles } from "../styles/dashboardStyles";
 import AppointmentForm from "./components/AppointmentForm";
 import ChatbotForm from "./components/ChatbotForm";
-import HealthAwarenessSwiper from "./components/HealthAwarenessSwiper";
-import TrustGallery from "./components/TrustGallery";
 import ChatbotWidget from "./components/ChatbotWidget";
-import { router } from "expo-router";
-import { COMMON_HEALTH_ISSUES } from "./components/common-health-issues";
-import { HOW_TO_USE_STEPS, STRINGS } from "./components/common-health-issues";
+import { COMMON_HEALTH_ISSUES, HOW_TO_USE_STEPS, STRINGS } from "./components/common-health-issues";
+import HealthAwarenessSwiper from "./components/HealthAwarenessSwiper";
 import HeroSection from "./components/HeroSection";
+import OfflineIndicator from "./components/OfflineIndicator"; // Added
+import TrustGallery from "./components/TrustGallery";
 
 
 
@@ -88,6 +82,10 @@ export default function DashboardScreen() {
 
   const username = "Arman Malik";
 
+
+
+
+
   return (
     <LinearGradient
       colors={["#F3F4F6", "#EFF6FF"]}
@@ -142,6 +140,9 @@ export default function DashboardScreen() {
         </View>
 
         <View style={styles.headerUnderline} />
+
+        {/* OFFLINE INDICATOR (Banner Style) */}
+        <OfflineIndicator />
 
         {/* modal for language selection */}
         <Modal visible={langOpen} transparent animationType="fade">
