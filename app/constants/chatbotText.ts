@@ -10,7 +10,7 @@ export const CHATBOT_TEXT: Record<Lang, any> = {
     phonePh: "10-digit number",
     summary: "Summary (Optional)",
     summaryPh: "e.g. Fever for 2 days",
-    attachments: "Photos / Videos (Optional, max 3)",
+    attachments: "Photos / Videos (Optional — up to 3 files) Images: JPG or PNG, max 10 MB each ,Videos: MP4, max 100 MB each",
     voice: "Voice Message (Optional)",
     addFile: "Add File",
     startRecording: "Record",
