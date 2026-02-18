@@ -53,17 +53,16 @@ npm install
 ### 2. Run the App
 ```bash
 npx expo start
-```
 *   Scan the QR code with your phone.
 *   **Note:** The app is already configured to talk to the Production Backend (`processed-backend.vercel.app`).
 
 ### 3. Test Credentials
-*   **Username (Phone):** `9999999999`
-*   **Password:** `admin123`
+*   **Username :** `demo`
+*   **Password:** `secret123`
 
 ---
 
-## � Project Structure
+##  Project Structure
 
 *   **`app/`**: The React Native Codebase.
     *   `services/SyncManager.ts`: The brain of the offline logic.

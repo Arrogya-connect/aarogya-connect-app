@@ -63,10 +63,10 @@ export const SyncManager = {
             if (!res.ok || !json.ok) {
                 throw new Error(json.error || "Server rejected sync");
             }
-            console.log(`[SyncManager] Successfully synced appointment ${item.id}`);
+            console.log(`[SyncManager] Successfully synced Record ${item.id}`);
         }
 
-        console.log(`[SyncManager] Successfully synced appointment ${item.id}`);
+        console.log(`[SyncManager] Successfully synced Record ${item.id}`);
         if (item.type === 'RECORD') {
             const { queryNumber, phone, summary, attachments } = item.data;
 
